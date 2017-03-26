@@ -87,10 +87,7 @@
 
 
 
-<meta name="description" content="netfilter与iptables
-参考资料：iptables防火墙原理详解iptables常用操作实例
-
-基础功能
+<meta name="description" content="netfilter与iptables基础功能
 Netfilter是Linux操作系统核心层内部的一个数据包处理模块
 
 它有如下三个主要的功能：
@@ -99,15 +96,12 @@ NAT - 网络地址转换
 MANGLE - 数据包内容修改
 FILTER - 数据包过滤的防火墙功能
 
-Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我">
+Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我们可以理解为回调函数点，数据包到达这些位置的时候会主动调用我们的函数，使我">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iptables/netfilter 详解">
 <meta property="og:url" content="http://yoursite.com/2017/intro-iptables.html">
 <meta property="og:site_name" content="TechBook">
-<meta property="og:description" content="netfilter与iptables
-参考资料：iptables防火墙原理详解iptables常用操作实例
-
-基础功能
+<meta property="og:description" content="netfilter与iptables基础功能
 Netfilter是Linux操作系统核心层内部的一个数据包处理模块
 
 它有如下三个主要的功能：
@@ -116,16 +110,13 @@ NAT - 网络地址转换
 MANGLE - 数据包内容修改
 FILTER - 数据包过滤的防火墙功能
 
-Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我">
+Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我们可以理解为回调函数点，数据包到达这些位置的时候会主动调用我们的函数，使我">
 <meta property="og:image" content="http://img.ylkb.net/2017-03-26-14905020886552.jpg">
 <meta property="og:image" content="http://img.ylkb.net/2017-03-26-14905021053362.jpg">
-<meta property="og:updated_time" content="2017-03-26T04:24:18.000Z">
+<meta property="og:updated_time" content="2017-03-26T05:56:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iptables/netfilter 详解">
-<meta name="twitter:description" content="netfilter与iptables
-参考资料：iptables防火墙原理详解iptables常用操作实例
-
-基础功能
+<meta name="twitter:description" content="netfilter与iptables基础功能
 Netfilter是Linux操作系统核心层内部的一个数据包处理模块
 
 它有如下三个主要的功能：
@@ -134,7 +125,7 @@ NAT - 网络地址转换
 MANGLE - 数据包内容修改
 FILTER - 数据包过滤的防火墙功能
 
-Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我">
+Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我们可以理解为回调函数点，数据包到达这些位置的时候会主动调用我们的函数，使我">
 <meta name="twitter:image" content="http://img.ylkb.net/2017-03-26-14905020886552.jpg">
 
 
@@ -402,10 +393,7 @@ Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我">
       
 
       
-        <h1 id="netfilter与iptables"><a href="#netfilter与iptables" class="headerlink" title="netfilter与iptables"></a>netfilter与iptables</h1><blockquote>
-<p>参考资料：<a href="https://segmentfault.com/a/1190000002540601" target="_blank" rel="external">iptables防火墙原理详解</a><br><a href="http://seanlook.com/2014/02/26/iptables-example/" target="_blank" rel="external">iptables常用操作实例</a></p>
-</blockquote>
-<h3 id="基础功能"><a href="#基础功能" class="headerlink" title="基础功能"></a>基础功能</h3><blockquote>
+        <h1 id="netfilter与iptables"><a href="#netfilter与iptables" class="headerlink" title="netfilter与iptables"></a>netfilter与iptables</h1><h3 id="基础功能"><a href="#基础功能" class="headerlink" title="基础功能"></a>基础功能</h3><blockquote>
 <p>Netfilter是Linux操作系统核心层内部的一个数据包处理模块</p>
 </blockquote>
 <p>它有如下三个主要的功能：</p>
@@ -427,8 +415,7 @@ Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我">
 <li>OUTPUT链 - OUTPUT是用来过滤所有本地生成的包</li>
 </ul>
 <p>通过以上分析，在实际操作中，linux服务器上基本用不到forward链。</p>
-<p>#####防火墙处理数据包的方式（规则）：</p>
-<ul>
+<h5 id="防火墙处理数据包的方式（规则）："><a href="#防火墙处理数据包的方式（规则）：" class="headerlink" title="防火墙处理数据包的方式（规则）："></a>防火墙处理数据包的方式（规则）：</h5><ul>
 <li>ACCEPT：允许数据包通过</li>
 <li>DROP：直接丢弃数据包，不给任何回应信息</li>
 <li>REJECT：拒绝数据包通过，必要时会给数据发送端一个响应的信息。</li>
@@ -464,58 +451,66 @@ Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我">
 <li>&lt;-j 动作&gt;：处理数据包的动作，包括ACCEPT、DROP、REJECT等</li>
 </ul>
 <h4 id="链管理命令"><a href="#链管理命令" class="headerlink" title="链管理命令"></a>链管理命令</h4><ul>
-<li>-P :设置默认策略的（设定默认门是关着的还是开着的）</li>
-</ul>
+<li><p>-P :设置默认策略的（设定默认门是关着的还是开着的）</p>
 <blockquote>
-<p>默认策略一般只有两种<br>iptables -P INPUT (DROP|ACCEPT)  默认是关的/默认是开的</p>
-<p>比如：<br>iptables -P INPUT DROP 这就把默认规则给拒绝了。<br>并且没有定义哪个动作，所以关于外界连接的所有规则包括Xshell连接之类的，远程连接都被拒绝了。</p>
+<p>默认策略一般只有两种<br>iptables -P INPUT (DROP|ACCEPT)  默认是关的/默认是开的<br>比如：<br>iptables -P INPUT DROP 这就把默认规则给拒绝了。<br>并且没有定义哪个动作，所以关于外界连接的所有规则包括Xshell连接之类的，远程连接都被拒绝了。</p>
 </blockquote>
-<ul>
-<li>-F: FLASH，清空规则链的(注意每个链的管理权限)</li>
-</ul>
+</li>
+<li><p>-F: FLASH，清空规则链的(注意每个链的管理权限)</p>
 <blockquote>
 <p>iptables -t nat -F PREROUTING<br>iptables -t nat -F 清空nat表的所有链</p>
 </blockquote>
-<ul>
-<li>-N:NEW 支持用户新建一个链</li>
-</ul>
+</li>
+<li><p>-N:NEW 支持用户新建一个链</p>
 <blockquote>
 <p>iptables -N inbound_tcp_web 表示附在tcp表上用于检查web的。</p>
 </blockquote>
-<ul>
-<li>-X: 用于删除用户自定义的空链</li>
-</ul>
+</li>
+<li><p>-X: 用于删除用户自定义的空链</p>
 <blockquote>
 <p>使用方法跟-N相同，但是在删除之前必须要将里面的链给清空昂了</p>
 </blockquote>
-<ul>
-<li>-E：用来Rename chain主要是用来给用户自定义的链重命名</li>
-</ul>
+</li>
+<li><p>-E：用来Rename chain主要是用来给用户自定义的链重命名</p>
 <blockquote>
 <p>-E oldname newname</p>
 </blockquote>
-<ul>
-<li>-Z：清空链，及链中默认规则的计数器的（有两个计数器，被匹配到多少个数据包，多少个字节）</li>
-</ul>
+</li>
+<li><p>-Z：清空链，及链中默认规则的计数器的（有两个计数器，被匹配到多少个数据包，多少个字节）</p>
 <blockquote>
 <p>iptables -Z :清空</p>
 </blockquote>
-<p>2.规则管理命令</p>
-<p>-A：追加，在当前链的最后新增一个规则</p>
-<p>-I num : 插入，把当前规则插入为第几条。</p>
+</li>
+</ul>
+<h4 id="规则管理命令"><a href="#规则管理命令" class="headerlink" title="规则管理命令"></a>规则管理命令</h4><ul>
+<li>-A：追加，在当前链的最后新增一个规则</li>
+<li><p>-I num : 插入，把当前规则插入为第几条。</p>
+<blockquote>
 <p>-I 3 :插入为第三条</p>
-<p>-R num：Replays替换/修改第几条规则</p>
+</blockquote>
+</li>
+<li><p>-R num：Replays替换/修改第几条规则</p>
+<blockquote>
 <p>格式：iptables -R 3 …………</p>
-<p>-D num：删除，明确指定删除第几条规则</p>
-<p>3.查看管理命令 “-L”</p>
-<p>附加子命令</p>
-<p>-n：以数字的方式显示ip，它会将ip直接显示出来，如果不加-n，则会将ip反向解析成主机名。</p>
-<p>-v：显示详细信息</p>
-<p>-vv</p>
-<p>-vvv :越多越详细</p>
-<p>-x：在计数器上显示精确值，不做单位换算</p>
-<p>–line-numbers : 显示规则的行号</p>
-<h3 id="iptables常用实例"><a href="#iptables常用实例" class="headerlink" title="iptables常用实例"></a>iptables常用实例</h3>
+</blockquote>
+</li>
+<li><p>-D num：删除，明确指定删除第几条规则</p>
+</li>
+</ul>
+<h4 id="查看管理命令-“-L”"><a href="#查看管理命令-“-L”" class="headerlink" title="查看管理命令 “-L”"></a>查看管理命令 “-L”</h4><p>附加子命令</p>
+<ul>
+<li>-n：以数字的方式显示ip，它会将ip直接显示出来，如果不加-n，则会将ip反向解析成主机名</li>
+<li>-v：显示详细信息</li>
+<li>-vv</li>
+<li>-vvv :越多越详细</li>
+<li>-x：在计数器上显示精确值，不做单位换算</li>
+<li>–line-numbers : 显示规则的行号</li>
+</ul>
+<h3 id="iptables常用实例"><a href="#iptables常用实例" class="headerlink" title="iptables常用实例"></a>iptables常用实例</h3><p>参考资料：</p>
+<blockquote>
+<p><a href="https://segmentfault.com/a/1190000002540601" target="_blank" rel="external">iptables防火墙原理详解</a><br><a href="http://seanlook.com/2014/02/26/iptables-example/" target="_blank" rel="external">iptables常用操作实例</a></p>
+</blockquote>
+
       
     </div>
 
@@ -569,8 +564,8 @@ Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我">
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/skills-of-django.html" rel="prev" title="试试看django的中文">
-                试试看django的中文 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/2017-03-26-python-iptables.html" rel="prev" title="python-iptables 实战">
+                python-iptables 实战 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -643,7 +638,7 @@ Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -654,7 +649,7 @@ Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我">
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -665,7 +660,7 @@ Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我">
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -714,7 +709,7 @@ Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#netfilter与iptables"><span class="nav-number">1.</span> <span class="nav-text">netfilter与iptables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础功能"><span class="nav-number">1.0.1.</span> <span class="nav-text">基础功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#filter表"><span class="nav-number">1.0.2.</span> <span class="nav-text">filter表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iptables编写规则"><span class="nav-number">1.0.3.</span> <span class="nav-text">iptables编写规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#链管理命令"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">链管理命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iptables常用实例"><span class="nav-number">1.0.4.</span> <span class="nav-text">iptables常用实例</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#netfilter与iptables"><span class="nav-number">1.</span> <span class="nav-text">netfilter与iptables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础功能"><span class="nav-number">1.0.1.</span> <span class="nav-text">基础功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#filter表"><span class="nav-number">1.0.2.</span> <span class="nav-text">filter表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#防火墙处理数据包的方式（规则）："><span class="nav-number">1.0.2.0.1.</span> <span class="nav-text">防火墙处理数据包的方式（规则）：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iptables编写规则"><span class="nav-number">1.0.3.</span> <span class="nav-text">iptables编写规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#链管理命令"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">链管理命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则管理命令"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">规则管理命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看管理命令-“-L”"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">查看管理命令 “-L”</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iptables常用实例"><span class="nav-number">1.0.4.</span> <span class="nav-text">iptables常用实例</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
