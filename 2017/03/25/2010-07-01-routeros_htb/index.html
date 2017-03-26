@@ -1,0 +1,800 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="routeros,htb," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="要想用routeros做限速，必须要知道以下几点：
+
+
+首先要知道自己要限制什么的速度，谁的速度，于是需要用的标记 ，即Mangle。
+其次要知道怎么限速，是限制上传，还是下载？
+最后要知道所做的限速是否成功，即需要知道如何检查！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RouterOS学习之HTB限速详解">
+<meta property="og:url" content="http://yoursite.com/2017/03/25/2010-07-01-routeros_htb/index.html">
+<meta property="og:site_name" content="TechBook">
+<meta property="og:description" content="要想用routeros做限速，必须要知道以下几点：
+
+
+首先要知道自己要限制什么的速度，谁的速度，于是需要用的标记 ，即Mangle。
+其次要知道怎么限速，是限制上传，还是下载？
+最后要知道所做的限速是否成功，即需要知道如何检查！">
+<meta property="og:updated_time" content="2017-03-25T15:53:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RouterOS学习之HTB限速详解">
+<meta name="twitter:description" content="要想用routeros做限速，必须要知道以下几点：
+
+
+首先要知道自己要限制什么的速度，谁的速度，于是需要用的标记 ，即Mangle。
+其次要知道怎么限速，是限制上传，还是下载？
+最后要知道所做的限速是否成功，即需要知道如何检查！">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/25/2010-07-01-routeros_htb/"/>
+
+
+
+
+
+  <title> RouterOS学习之HTB限速详解 | TechBook </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TechBook</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Read && Write</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/25/2010-07-01-routeros_htb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TechBook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                RouterOS学习之HTB限速详解
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-25T23:53:02+08:00">
+                2017-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/work/" itemprop="url" rel="index">
+                    <span itemprop="name">work</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>要想用routeros做限速，必须要知道以下几点：</p>
+</blockquote>
+<ol>
+<li>首先要知道自己要限制什么的速度，谁的速度，于是需要用的标记 ，即Mangle。</li>
+<li>其次要知道怎么限速，是限制上传，还是下载？</li>
+<li>最后要知道所做的限速是否成功，即需要知道如何检查！</li>
+</ol>
+<a id="more"></a>
+<h4 id="1-标记（mangle）"><a href="#1-标记（mangle）" class="headerlink" title="1. 标记（mangle）"></a>1. 标记（mangle）</h4><ol>
+<li>这是很有学问的一件事情，ros对数据包的标记不是很好，必须要通过标记连接以后再来标记数据包！即，先通过mark connection，再通过connection来mark packet！<blockquote>
+<p>问：为什么非要标记成packet，不能直接用connection？</p>
+</blockquote>
+</li>
+<li>mark的时候需注意passthrough，前面标记过的connection且勾选了passthrough，后面条件符合该连接的时候就会标记成后面的连接。</li>
+<li>每个连接只会有一个标记！切记，切记！</li>
+</ol>
+<h4 id="2-Parent（父节点）"><a href="#2-Parent（父节点）" class="headerlink" title="2. Parent（父节点）"></a>2. Parent（父节点）</h4><ol>
+<li>个人感觉很有意思的意见事情，因为ros的帮助文档中明确说明了，ros是管出不管入 ，而前面标记的都是整个连接的数据包（既有上行，又有下行！）</li>
+<li>在设置HTB的时候，父节点设置为wan口就为上行的流量，父节点为lan口就为下行的流量。</li>
+<li>此外，父节点仅负责流量的整形与优先级的排队，并不存储任何数据包，即它是不存在任何队列的！</li>
+</ol>
+<h4 id="3-firewall（防火墙）"><a href="#3-firewall（防火墙）" class="headerlink" title="3. firewall（防火墙）"></a>3. firewall（防火墙）</h4><ol>
+<li>通过ros所有的连接都是掌控在firewall的法眼中的，通过connection的标签可以很容易的观察到所有用户的连接情况。</li>
+<li>在connection mark中很容易看到某条连接是被自己标记成了什么，最好的情况是所有的连接均被标记，这样后面的htb才比较准确！</li>
+<li>这是至关重要的一步，如果connection都没有被打上标记，限速注定是失败的！</li>
+</ol>
+<h4 id="4-Queue-Tree"><a href="#4-Queue-Tree" class="headerlink" title="4. Queue Tree"></a>4. Queue Tree</h4><ol>
+<li>只需要说一点，某个节点只要被其他节点认成parent，它就失去了packet mark的权利！</li>
+<li>这也是第一点中为什么标记成packet而不直接用connection的原因！</li>
+<li>只要叶子节点在packet mark中选中标记的packet才有效！</li>
+</ol>
+<h4 id="5-Limit-At-amp-Max-Limit"><a href="#5-Limit-At-amp-Max-Limit" class="headerlink" title="5. Limit At &amp; Max Limit"></a>5. Limit At &amp; Max Limit</h4><ol>
+<li>很多人误解Max Limit是最好的限速工具，其实不然，在HTB中最重要的是limit At（个人觉得）！</li>
+<li>ros总是保证了Limit At以后才有闲心去检测Max Limit！</li>
+</ol>
+<blockquote>
+<p>说的比较笼统，理解靠个人！</p>
+<p>希望对那些学了一点又有些困惑的朋友有些帮助，一无所知的就当是来打了酱油！</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>@2017-01-07搬家</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/routeros/" rel="tag"># routeros</a>
+          
+            <a href="/tags/htb/" rel="tag"># htb</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/25/nice-to-see-you/" rel="next" title="nice to see you">
+                <i class="fa fa-chevron-left"></i> nice to see you
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Michael" />
+          <p class="site-author-name" itemprop="name">Michael</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-标记（mangle）"><span class="nav-number">1.</span> <span class="nav-text">1. 标记（mangle）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Parent（父节点）"><span class="nav-number">2.</span> <span class="nav-text">2. Parent（父节点）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-firewall（防火墙）"><span class="nav-number">3.</span> <span class="nav-text">3. firewall（防火墙）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Queue-Tree"><span class="nav-number">4.</span> <span class="nav-text">4. Queue Tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Limit-At-amp-Max-Limit"><span class="nav-number">5.</span> <span class="nav-text">5. Limit At & Max Limit</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Michael</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
