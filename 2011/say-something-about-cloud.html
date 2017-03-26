@@ -1,0 +1,777 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux,cloud," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="看了下，都快好几个月都没更新了，昨天突发奇想，看了下PR值，居然也有2了！但愿我后面的日子会好过点。
+
+没什么好说的，随便提出了几个关键词，跟大家分享下。
+1. Linux我最近的工作都是跟linux打交到，学了很多东西，跟自学的时候差别很大，因为后面有人用枪顶着。
+Shell：很好很强大的一个工具，我不想把他定义为语言，但只是工具，处理手中杂事的一种高效的工具，如果有一件事情你需要做两边以上，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="说说云服务的一些事">
+<meta property="og:url" content="http://yoursite.com/2011/say-something-about-cloud.html">
+<meta property="og:site_name" content="TechBook">
+<meta property="og:description" content="看了下，都快好几个月都没更新了，昨天突发奇想，看了下PR值，居然也有2了！但愿我后面的日子会好过点。
+
+没什么好说的，随便提出了几个关键词，跟大家分享下。
+1. Linux我最近的工作都是跟linux打交到，学了很多东西，跟自学的时候差别很大，因为后面有人用枪顶着。
+Shell：很好很强大的一个工具，我不想把他定义为语言，但只是工具，处理手中杂事的一种高效的工具，如果有一件事情你需要做两边以上，">
+<meta property="og:updated_time" content="2017-03-26T03:49:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="说说云服务的一些事">
+<meta name="twitter:description" content="看了下，都快好几个月都没更新了，昨天突发奇想，看了下PR值，居然也有2了！但愿我后面的日子会好过点。
+
+没什么好说的，随便提出了几个关键词，跟大家分享下。
+1. Linux我最近的工作都是跟linux打交到，学了很多东西，跟自学的时候差别很大，因为后面有人用枪顶着。
+Shell：很好很强大的一个工具，我不想把他定义为语言，但只是工具，处理手中杂事的一种高效的工具，如果有一件事情你需要做两边以上，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2011/say-something-about-cloud.html"/>
+
+
+
+
+
+  <title> 说说云服务的一些事 | TechBook </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TechBook</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Read && Write</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2011/say-something-about-cloud.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TechBook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                说说云服务的一些事
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2011-08-01T00:00:00+08:00">
+                2011-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/work/" itemprop="url" rel="index">
+                    <span itemprop="name">work</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>看了下，都快好几个月都没更新了，昨天突发奇想，看了下PR值，居然也有2了！但愿我后面的日子会好过点。</p>
+</blockquote>
+<p>没什么好说的，随便提出了几个关键词，跟大家分享下。</p>
+<h2 id="1-Linux"><a href="#1-Linux" class="headerlink" title="1. Linux"></a>1. Linux</h2><p>我最近的工作都是跟linux打交到，学了很多东西，跟自学的时候差别很大，因为后面有人用枪顶着。</p>
+<p>Shell：很好很强大的一个工具，我不想把他定义为语言，但只是工具，处理手中杂事的一种高效的工具，如果有一件事情你需要做两边以上，那么写一个shell来完成把～～</p>
+<p>Ubuntu：上周开始试着放弃windows，改用linux，对我个人而言确实方便了很多，加上Vbox来处理那些linux无法完成的任务，其余的时间就都跟它度过了。本来在办公室安装的是10.10，但回家体验了下11.04以后，果断换成了Unity界面，符合我的风格。</p>
+<p>MacOS：周末两天都耗在这个上面了，好看，不知道好不好用，把驱动那些东西还没看懂，目前处于mac无法联网的状态，黑苹果继续“黑”着它的眼睛（因为无法上网呀）。</p>
+<h2 id="2-云服务"><a href="#2-云服务" class="headerlink" title="2. 云服务"></a>2. 云服务</h2><p>GAE：最早接触的云服，做的不错，毕竟是google的东西嘛，那技术让人望其项背呀！因为目前只支持python和java，又被GFW挡着，我也只有看看了～～</p>
+<p>SAE：看这就象山寨，其实他也是山寨，连名字都差不多，目前只提供php的服务，技术水平还不敢发表评论，但你的应用要是建在这个上面，那后面的日子估计不好过，玩玩还可以了。。</p>
+<p>Amazon：强大的亚马逊，直接提供给你主机，霸气威武不解释，应该是可以用他来看墙外的世界的，今天下午信用卡被扣了款，还没开通成功，郁闷死我了～～</p>
+<p>DotCloud：很有意思的一个云服务，我以为后面是什么组织呢，建了一个应用以后，在ubuntu下ping了下域名，果断把我雷到了，下面是真相</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">michael@michael-Inspiron-560s:~$ ping 9e88464f.dotcloud.com</div><div class="line">PING ec2-174-129-17-131.compute-1.amazonaws.com (174.129.17.131) 56(84) bytes of data.</div><div class="line">64 bytes from ec2-174-129-17-131.compute-1.amazonaws.com (174.129.17.131): icmp_req=1 ttl=46 time=495 ms</div><div class="line">64 bytes from ec2-174-129-17-131.compute-1.amazonaws.com (174.129.17.131): icmp_req=2 ttl=46 time=496 ms</div><div class="line">64 bytes from ec2-174-129-17-131.compute-1.amazonaws.com (174.129.17.131): icmp_req=3 ttl=46 time=485 ms</div><div class="line">^C</div><div class="line">--- ec2-174-129-17-131.compute-1.amazonaws.com ping statistics ---</div><div class="line">4 packets transmitted, 3 received, 25% packet loss, time 3003ms</div><div class="line">rtt min/avg/max/mdev = 485.920/492.466/496.194/4.643 ms</div></pre></td></tr></table></figure>
+<p>看的清吗？\^_\^，他用的居然是“AWS”，小子建在服务之上的服务，高，实在是高！</p>
+<p>其实这未免也不是一种好的想法，把一种服务包装一下，变成另外一个服务，然后用前面的服务来支撑后者，顺便还有点结余～～恩，不错！</p>
+<p>好了，不扯了，该下班了～～</p>
+<hr>
+<blockquote>
+<p>@2017-01-07搬家, 发现dotcloud就是现在的docker呀</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/cloud/" rel="tag"># cloud</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2010/routeros-htb.html" rel="next" title="RouterOS学习之HTB限速详解">
+                <i class="fa fa-chevron-left"></i> RouterOS学习之HTB限速详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/intro-iptables.html" rel="prev" title="iptables/netfilter 详解">
+                iptables/netfilter 详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Michael" />
+          <p class="site-author-name" itemprop="name">Michael</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Linux"><span class="nav-number">1.</span> <span class="nav-text">1. Linux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-云服务"><span class="nav-number">2.</span> <span class="nav-text">2. 云服务</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Michael</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
