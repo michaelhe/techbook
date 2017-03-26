@@ -90,10 +90,8 @@
 <meta name="description" content="celery 简介
 celery是一个异步执行工具，主要用于异步执行一些比较长的任务时用到。
 
-简单的用法
-1 创建一个tasks.py
-
-12345678910111213141516# tasks.pyimport timefrom celery import Celerycelery = Celery(&apos;tasks&apos;, broker=&apos;redis://127.0.0.1:6379/0&apos;)@c">
+简单的用法step 1. 创建一个tasks.py
+12345678910111213141516# tasks.pyimport timefrom celery import Celerycelery = Celery(&apos;tasks&apos;, broker=&apos;redis://127.0.0.1:6379/0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="celery">
 <meta property="og:url" content="http://yoursite.com/2017/03/25/2017-03-25-intro-celery/index.html">
@@ -101,20 +99,16 @@ celery是一个异步执行工具，主要用于异步执行一些比较长的�
 <meta property="og:description" content="celery 简介
 celery是一个异步执行工具，主要用于异步执行一些比较长的任务时用到。
 
-简单的用法
-1 创建一个tasks.py
-
-12345678910111213141516# tasks.pyimport timefrom celery import Celerycelery = Celery(&apos;tasks&apos;, broker=&apos;redis://127.0.0.1:6379/0&apos;)@c">
-<meta property="og:updated_time" content="2017-03-25T14:36:14.000Z">
+简单的用法step 1. 创建一个tasks.py
+12345678910111213141516# tasks.pyimport timefrom celery import Celerycelery = Celery(&apos;tasks&apos;, broker=&apos;redis://127.0.0.1:6379/0">
+<meta property="og:updated_time" content="2017-03-26T03:21:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="celery">
 <meta name="twitter:description" content="celery 简介
 celery是一个异步执行工具，主要用于异步执行一些比较长的任务时用到。
 
-简单的用法
-1 创建一个tasks.py
-
-12345678910111213141516# tasks.pyimport timefrom celery import Celerycelery = Celery(&apos;tasks&apos;, broker=&apos;redis://127.0.0.1:6379/0&apos;)@c">
+简单的用法step 1. 创建一个tasks.py
+12345678910111213141516# tasks.pyimport timefrom celery import Celerycelery = Celery(&apos;tasks&apos;, broker=&apos;redis://127.0.0.1:6379/0">
 
 
 
@@ -384,13 +378,9 @@ celery是一个异步执行工具，主要用于异步执行一些比较长的�
         <h5 id="celery-简介"><a href="#celery-简介" class="headerlink" title="celery 简介"></a>celery 简介</h5><blockquote>
 <p>celery是一个异步执行工具，主要用于异步执行一些比较长的任务时用到。</p>
 </blockquote>
-<h5 id="简单的用法"><a href="#简单的用法" class="headerlink" title="简单的用法"></a>简单的用法</h5><blockquote>
-<p>1 创建一个<code>tasks.py</code></p>
-</blockquote>
+<h5 id="简单的用法"><a href="#简单的用法" class="headerlink" title="简单的用法"></a>简单的用法</h5><p>step 1. 创建一个<code>tasks.py</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># tasks.py</span></div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</div><div class="line"></div><div class="line">celery = Celery(<span class="string">'tasks'</span>, broker=<span class="string">'redis://127.0.0.1:6379/0'</span>)</div><div class="line"></div><div class="line"><span class="meta">@celery.task</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sendmail</span><span class="params">(mail)</span>:</span></div><div class="line">    print(<span class="string">'sending mail to %s...'</span> % mail[<span class="string">'to'</span>])</div><div class="line">    time.sleep(<span class="number">2.0</span>)</div><div class="line">    print(<span class="string">'mail sent.'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@celery.task</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="string">'google'</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>2 在另外的程序中来引用这个文件，并调用里面的函数</p>
-</blockquote>
+<p>step 2. 在另外的程序中来引用这个文件，并调用里面的函数</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> tasks <span class="keyword">import</span> sendmail</div><div class="line">sendmail.delay(test@qq.com)</div></pre></td></tr></table></figure>
 
       
@@ -434,8 +424,8 @@ celery是一个异步执行工具，主要用于异步执行一些比较长的�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/25/2017-03-25-skills_of_django/" rel="next" title="django">
-                <i class="fa fa-chevron-left"></i> django
+              <a href="/2017/03/25/2012-09-28-git_guide/" rel="next" title="一张图让你了解git">
+                <i class="fa fa-chevron-left"></i> 一张图让你了解git
               </a>
             
           </div>
@@ -444,8 +434,8 @@ celery是一个异步执行工具，主要用于异步执行一些比较长的�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/25/2012-01-02-from_2011_to_2012/" rel="prev" title="回顾2011，展望2012！">
-                回顾2011，展望2012！ <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/25/2017-03-07-hello_table/" rel="prev" title="hello table">
+                hello table <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -518,7 +508,7 @@ celery是一个异步执行工具，主要用于异步执行一些比较长的�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -529,7 +519,7 @@ celery是一个异步执行工具，主要用于异步执行一些比较长的�
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -540,7 +530,7 @@ celery是一个异步执行工具，主要用于异步执行一些比较长的�
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
