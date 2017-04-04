@@ -58,7 +58,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.css.network/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -270,6 +270,151 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/2017-04-04.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael">
+      <meta itemprop="description" content="hello world">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TechBook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/2017-04-04.html" itemprop="url">
+                  收藏一些
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-04T00:00:00+08:00">
+                2017-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一些收藏用的"><a href="#一些收藏用的" class="headerlink" title="一些收藏用的"></a>一些收藏用的</h4><ul>
+<li><a href="https://maicong.me/t/203#comments" target="_blank" rel="external">https://maicong.me/t/203#comments</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/django-models.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -368,58 +513,15 @@
 
       
         
-          
-            <h3 id="入门实例"><a href="#入门实例" class="headerlink" title="入门实例"></a>入门实例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## myapp/models.py</span></div><div class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(models.Model)</span>:</span></div><div class="line">    first_name = models.CharField(max_length=<span class="number">30</span>)</div><div class="line">    last_name = models.CharField(max_length=<span class="number">30</span>)</div></pre></td></tr></table></figure>
+          <h3 id="入门实例"><a href="#入门实例" class="headerlink" title="入门实例"></a>入门实例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## myapp/models.py</span></div><div class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(models.Model)</span>:</span></div><div class="line">    first_name = models.CharField(max_length=<span class="number">30</span>)</div><div class="line">    last_name = models.CharField(max_length=<span class="number">30</span>)</div></pre></td></tr></table></figure>
 <p><code>first_name</code> 和 <code>last_name</code> 为数据表的两个字段</p>
-<h3 id="使用模型"><a href="#使用模型" class="headerlink" title="使用模型"></a>使用模型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">INSTALLED_APPS = (</div><div class="line">    <span class="comment">#...</span></div><div class="line">    <span class="string">'myapp'</span>,</div><div class="line">    <span class="comment">#...</span></div><div class="line">)</div></pre></td></tr></table></figure>
-<p>运行脚本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">manage.py makemigrations</div><div class="line">manage.py migrate</div></pre></td></tr></table></figure>
-<h3 id="增删改查方法实战"><a href="#增删改查方法实战" class="headerlink" title="增删改查方法实战"></a>增删改查方法实战</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> myapp.models <span class="keyword">import</span> Person</div><div class="line"><span class="comment"># 1. 新增-add</span></div><div class="line">person = Person(first_name=<span class="string">'hello'</span>,last_name=<span class="string">'world'</span>)</div><div class="line">person.save()</div><div class="line"><span class="comment"># 2. 查询-query</span></div><div class="line">persons = Person.objects.filter(first_name=<span class="string">'hello'</span>)</div><div class="line">p1 = Person.objects.get(first_name=<span class="string">'hello'</span>)</div><div class="line"><span class="comment"># 3. 删除-delete</span></div><div class="line">persons.delete()</div><div class="line">p1.delete()</div><div class="line"><span class="comment"># 4. 修改-update</span></div><div class="line">p1.update(last_name=<span class="string">'new_world'</span>)</div><div class="line">p1.save()</div></pre></td></tr></table></figure>
-<h3 id="原始sql查询"><a href="#原始sql查询" class="headerlink" title="原始sql查询"></a>原始sql查询</h3><pre><code class="python">persons = Person.objects.raw(<span class="string">'SELECT * FROM myapp_person'</span>)
-<span class="comment"># 为了避免被SQL注入，用以下方式</span>
-lname = <span class="string">'world'</span>
-Person.objects.raw(<span class="string">'SELECT * FROM myapp_person WHERE last_name = %s'</span>, [lname])
-<span class="comment"># 不要使用以下方式</span>
-query = <span class="string">'SELECT * FROM myapp_person WHERE last_name = %s'</span> % lname
-Person.objects.raw(query)
-</code></pre>
-<h3 id="原始连接DB的方法"><a href="#原始连接DB的方法" class="headerlink" title="原始连接DB的方法"></a>原始连接DB的方法</h3><pre><code class="python"><span class="keyword">from</span> django.db <span class="keyword">import</span> connection
-
-<span class="function"><span class="keyword">def</span> <span class="title">my_custom_sql</span><span class="params">(self)</span>:</span>
-    cursor = connection.cursor()
-
-    cursor.execute(<span class="string">"UPDATE bar SET foo = 1 WHERE baz = %s"</span>, [self.baz])
-
-    cursor.execute(<span class="string">"SELECT foo FROM bar WHERE baz = %s"</span>, [self.baz])
-    row = cursor.fetchone()
-    <span class="comment">#row = cursor.fetchall()</span>
-    <span class="keyword">return</span> row
-</code></pre>
-<h3 id="附件："><a href="#附件：" class="headerlink" title="附件："></a>附件：</h3><blockquote>
-<p>tips :<br>django每次查询的时候就连一次数据库，查询完成之后就立马关掉，这样并发高的时候，是扛不住的。</p>
-</blockquote>
-<h4 id="字段类型"><a href="#字段类型" class="headerlink" title="字段类型"></a>字段类型</h4><ul>
-<li>AutoField</li>
-<li>BigIntegerField</li>
-<li>BinaryField</li>
-<li>BooleanField</li>
-<li>CharField</li>
-<li>DateField</li>
-<li>DateTimeField</li>
-<li>DecimalField</li>
-<li>EmailField</li>
-<li>FilePathField</li>
-<li>FloatField</li>
-<li>ImageField</li>
-<li>IntegerField</li>
-<li>GenericIPAddressField</li>
-<li>TextField</li>
-<li>TimeField</li>
-<li>URLField</li>
-<li>UUIDField</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/django-models.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -461,7 +563,7 @@ Person.objects.raw(query)
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/skills-of-linux.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/linux/skills-of-linux.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Michael">
@@ -483,7 +585,7 @@ Person.objects.raw(query)
             
               
                 
-                <a class="post-title-link" href="/2017/skills-of-linux.html" itemprop="url">
+                <a class="post-title-link" href="/2017/linux/skills-of-linux.html" itemprop="url">
                   skills of linux
                 </a>
               
@@ -523,8 +625,8 @@ Person.objects.raw(query)
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/work/" itemprop="url" rel="index">
-                    <span itemprop="name">work</span>
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
                   </a>
                 </span>
 
@@ -560,7 +662,20 @@ Person.objects.raw(query)
       
         
           
-            <h4 id="sudo-files配置技巧"><a href="#sudo-files配置技巧" class="headerlink" title="sudo files配置技巧"></a>sudo files配置技巧</h4><blockquote>
+            <h4 id="终端使用技巧"><a href="#终端使用技巧" class="headerlink" title="终端使用技巧"></a>终端使用技巧</h4><ul>
+<li>查看剪切板历史 command+shift+h</li>
+<li>删除（清除）一行 ： ==control +u==</li>
+<li>删除当前的字符 ： control + d</li>
+<li>删除之前的字符 ： control + h</li>
+<li>删除之前的单词 ： ==control + w==</li>
+<li>删除之后的文本 ： control + k</li>
+<li>将光标移到行尾 ： ==control + e==</li>
+<li>将光标移到行首 ： ==control +a==</li>
+<li>交换光标处文本 ： control + t</li>
+<li>清除屏幕 ： command + r || control + l</li>
+<li>搜索历史命令 : control + r</li>
+</ul>
+<h4 id="sudo-files配置技巧"><a href="#sudo-files配置技巧" class="headerlink" title="sudo files配置技巧"></a>sudo files配置技巧</h4><blockquote>
 <p>本篇实验环境在<code>centos7</code>下进行</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">michael ALL=(root) NOPASSWD:  ALL</div></pre></td></tr></table></figure>
@@ -615,7 +730,7 @@ Person.objects.raw(query)
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/aaa/git-guide.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/linux/git-guide.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Michael">
@@ -637,7 +752,7 @@ Person.objects.raw(query)
             
               
                 
-                <a class="post-title-link" href="/2017/aaa/git-guide.html" itemprop="url">
+                <a class="post-title-link" href="/2017/linux/git-guide.html" itemprop="url">
                   一张图让你了解git
                 </a>
               
@@ -1186,7 +1301,7 @@ Person.objects.raw(query)
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/intro-iptables.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/linux/python-iptables.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Michael">
@@ -1208,7 +1323,177 @@ Person.objects.raw(query)
             
               
                 
-                <a class="post-title-link" href="/2017/intro-iptables.html" itemprop="url">
+                <a class="post-title-link" href="/2017/linux/python-iptables.html" itemprop="url">
+                  python-iptables 实战
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-23T00:00:00+08:00">
+                2017-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install --upgrade python-iptables</div></pre></td></tr></table></figure>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> iptc</div><div class="line"><span class="comment"># iptables 的表</span></div><div class="line">table = iptc.Table(iptc.Table.FILTER) </div><div class="line"><span class="comment"># iptables 的链</span></div><div class="line">chain = iptc.Chain(table, <span class="string">"INPUT"</span>)</div></pre></td></tr></table></figure>
+<h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><p>在<code>python-iptables</code>中，操作的对象是一个Rule</p>
+<blockquote>
+<p>rule = iptc.Rule()</p>
+</blockquote>
+<p>rule有一些属性</p>
+<ul>
+<li>in_interface 网络接口，如<code>eth0</code></li>
+<li>src 源ip地址，如<code>&quot;192.168.1.0/255.255.255.0&quot;</code></li>
+<li>protocol 协议，如<code>tcp</code> <code>udp</code></li>
+</ul>
+<p>有了Rule以后，需要知道是什么样的规则，于是就有了Match</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">match = iptc.Match(rule,<span class="string">'tcp'</span>)</div><div class="line">rule.add_match(match)</div><div class="line"><span class="comment"># 跟下面的表达式等价</span></div><div class="line">match = rule.add_match(<span class="string">'tcp'</span>)</div></pre></td></tr></table></figure>
+<p>match也同样有一些属性</p>
+<ul>
+<li>dport 目的端口，如match.dport = ‘80’</li>
+<li>sport 来源端口</li>
+<li>mark 对数据包的标记，如match.mark = ‘0xff’</li>
+</ul>
+<p>当规则和条件都有了以后，就需要对这个包做一些动作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">target = iptc.Target(rule, <span class="string">"DROP"</span>)</div><div class="line">rule.target = target</div><div class="line"><span class="comment"># 跟下面的表达式等价，动作可以是DROP也可以是ACCEPT</span></div><div class="line">target = rule.create_target(<span class="string">"DROP"</span>)</div></pre></td></tr></table></figure>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h3 id="查看当前的iptables列表"><a href="#查看当前的iptables列表" class="headerlink" title="查看当前的iptables列表"></a>查看当前的iptables列表</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> iptc</div><div class="line">table = iptc.Table(iptc.Table.FILTER)</div><div class="line"><span class="keyword">for</span> chain <span class="keyword">in</span> table.chains:</div><div class="line">    <span class="keyword">print</span> <span class="string">"======================="</span></div><div class="line">    <span class="keyword">print</span> <span class="string">"Chain "</span>, chain.name</div><div class="line">    <span class="keyword">for</span> rule <span class="keyword">in</span> chain.rules:</div><div class="line">        <span class="keyword">print</span> <span class="string">"Rule"</span>, <span class="string">"proto:"</span>, rule.protocol,</div><div class="line">        <span class="keyword">print</span> <span class="string">"Matches:"</span>,</div><div class="line">        <span class="keyword">for</span> match <span class="keyword">in</span> rule.matches:</div><div class="line">            <span class="keyword">print</span> <span class="string">"dport:"</span>, match.dport, <span class="string">"sport:"</span>,match.sport,</div><div class="line">        <span class="keyword">print</span> <span class="string">"Target:"</span>,</div><div class="line">        <span class="keyword">print</span> rule.target.name,</div><div class="line">        <span class="keyword">print</span> <span class="string">"Counter:"</span>,</div><div class="line">        <span class="keyword">print</span> rule.get_counters()</div><div class="line"><span class="keyword">print</span> <span class="string">"======================="</span></div></pre></td></tr></table></figure>
+<h3 id="在INPUT表中新增-删除一条规则"><a href="#在INPUT表中新增-删除一条规则" class="headerlink" title="在INPUT表中新增/删除一条规则"></a>在INPUT表中新增/删除一条规则</h3><blockquote>
+<p>iptables -A OUTPUT -p tcp –sport 1800</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> iptc</div><div class="line">table = iptc.Table(iptc.Table.FILTER)</div><div class="line">chain = iptc.Chain(table, <span class="string">"OUTPUT"</span>)</div><div class="line"></div><div class="line">rule = iptc.Rule()</div><div class="line">rule.protocol = <span class="string">"tcp"</span></div><div class="line">match = iptc.Match(rule,<span class="string">'tcp'</span>)</div><div class="line">match.protocol = <span class="string">'tcp'</span></div><div class="line">match.sport = <span class="string">"1800"</span></div><div class="line">rule.add_match(match)</div><div class="line">target = iptc.Target(rule, <span class="string">"ACCEPT"</span>)</div><div class="line">rule.target = target</div><div class="line">chain.insert_rule(rule)</div><div class="line"><span class="comment">#chain.delete_rule(rule)</span></div><div class="line">table.commit()</div></pre></td></tr></table></figure>
+<h3 id="清空规则和清空计数器"><a href="#清空规则和清空计数器" class="headerlink" title="清空规则和清空计数器"></a>清空规则和清空计数器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> iptc</div><div class="line">table = iptc.Table(iptc.Table.FILTER)</div><div class="line">input = iptc.Chain(table, <span class="string">"INPUT"</span>)</div><div class="line"><span class="comment"># 清空计数器</span></div><div class="line">input.zero_counters()</div><div class="line"><span class="comment"># 清空规则</span></div><div class="line">input.flush()</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/linux/intro-iptables.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael">
+      <meta itemprop="description" content="hello world">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TechBook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/linux/intro-iptables.html" itemprop="url">
                   iptables/netfilter 详解
                 </a>
               
@@ -1445,176 +1730,6 @@ Person.objects.raw(query)
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/python-iptables.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Michael">
-      <meta itemprop="description" content="hello world">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TechBook">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/python-iptables.html" itemprop="url">
-                  python-iptables 实战
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-23T00:00:00+08:00">
-                2017-03-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install --upgrade python-iptables</div></pre></td></tr></table></figure>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> iptc</div><div class="line"><span class="comment"># iptables 的表</span></div><div class="line">table = iptc.Table(iptc.Table.FILTER) </div><div class="line"><span class="comment"># iptables 的链</span></div><div class="line">chain = iptc.Chain(table, <span class="string">"INPUT"</span>)</div></pre></td></tr></table></figure>
-<h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><p>在<code>python-iptables</code>中，操作的对象是一个Rule</p>
-<blockquote>
-<p>rule = iptc.Rule()</p>
-</blockquote>
-<p>rule有一些属性</p>
-<ul>
-<li>in_interface 网络接口，如<code>eth0</code></li>
-<li>src 源ip地址，如<code>&quot;192.168.1.0/255.255.255.0&quot;</code></li>
-<li>protocol 协议，如<code>tcp</code> <code>udp</code></li>
-</ul>
-<p>有了Rule以后，需要知道是什么样的规则，于是就有了Match</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">match = iptc.Match(rule,<span class="string">'tcp'</span>)</div><div class="line">rule.add_match(match)</div><div class="line"><span class="comment"># 跟下面的表达式等价</span></div><div class="line">match = rule.add_match(<span class="string">'tcp'</span>)</div></pre></td></tr></table></figure>
-<p>match也同样有一些属性</p>
-<ul>
-<li>dport 目的端口，如match.dport = ‘80’</li>
-<li>sport 来源端口</li>
-<li>mark 对数据包的标记，如match.mark = ‘0xff’</li>
-</ul>
-<p>当规则和条件都有了以后，就需要对这个包做一些动作：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">target = iptc.Target(rule, <span class="string">"DROP"</span>)</div><div class="line">rule.target = target</div><div class="line"><span class="comment"># 跟下面的表达式等价，动作可以是DROP也可以是ACCEPT</span></div><div class="line">target = rule.create_target(<span class="string">"DROP"</span>)</div></pre></td></tr></table></figure>
-<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h3 id="查看当前的iptables列表"><a href="#查看当前的iptables列表" class="headerlink" title="查看当前的iptables列表"></a>查看当前的iptables列表</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> iptc</div><div class="line">table = iptc.Table(iptc.Table.FILTER)</div><div class="line"><span class="keyword">for</span> chain <span class="keyword">in</span> table.chains:</div><div class="line">    <span class="keyword">print</span> <span class="string">"======================="</span></div><div class="line">    <span class="keyword">print</span> <span class="string">"Chain "</span>, chain.name</div><div class="line">    <span class="keyword">for</span> rule <span class="keyword">in</span> chain.rules:</div><div class="line">        <span class="keyword">print</span> <span class="string">"Rule"</span>, <span class="string">"proto:"</span>, rule.protocol,</div><div class="line">        <span class="keyword">print</span> <span class="string">"Matches:"</span>,</div><div class="line">        <span class="keyword">for</span> match <span class="keyword">in</span> rule.matches:</div><div class="line">            <span class="keyword">print</span> <span class="string">"dport:"</span>, match.dport, <span class="string">"sport:"</span>,match.sport,</div><div class="line">        <span class="keyword">print</span> <span class="string">"Target:"</span>,</div><div class="line">        <span class="keyword">print</span> rule.target.name,</div><div class="line">        <span class="keyword">print</span> <span class="string">"Counter:"</span>,</div><div class="line">        <span class="keyword">print</span> rule.get_counters()</div><div class="line"><span class="keyword">print</span> <span class="string">"======================="</span></div></pre></td></tr></table></figure>
-<h3 id="在INPUT表中新增-删除一条规则"><a href="#在INPUT表中新增-删除一条规则" class="headerlink" title="在INPUT表中新增/删除一条规则"></a>在INPUT表中新增/删除一条规则</h3><blockquote>
-<p>iptables -A OUTPUT -p tcp –sport 1800</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> iptc</div><div class="line">table = iptc.Table(iptc.Table.FILTER)</div><div class="line">chain = iptc.Chain(table, <span class="string">"OUTPUT"</span>)</div><div class="line"></div><div class="line">rule = iptc.Rule()</div><div class="line">rule.protocol = <span class="string">"tcp"</span></div><div class="line">match = iptc.Match(rule,<span class="string">'tcp'</span>)</div><div class="line">match.protocol = <span class="string">'tcp'</span></div><div class="line">match.sport = <span class="string">"1800"</span></div><div class="line">rule.add_match(match)</div><div class="line">target = iptc.Target(rule, <span class="string">"ACCEPT"</span>)</div><div class="line">rule.target = target</div><div class="line">chain.insert_rule(rule)</div><div class="line"><span class="comment">#chain.delete_rule(rule)</span></div><div class="line">table.commit()</div></pre></td></tr></table></figure>
-<h3 id="清空规则和清空计数器"><a href="#清空规则和清空计数器" class="headerlink" title="清空规则和清空计数器"></a>清空规则和清空计数器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> iptc</div><div class="line">table = iptc.Table(iptc.Table.FILTER)</div><div class="line">input = iptc.Chain(table, <span class="string">"INPUT"</span>)</div><div class="line"><span class="comment"># 清空计数器</span></div><div class="line">input.zero_counters()</div><div class="line"><span class="comment"># 清空规则</span></div><div class="line">input.flush()</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2011/say-something-about-cloud.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1768,163 +1883,13 @@ Person.objects.raw(query)
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2010/routeros-htb.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Michael">
-      <meta itemprop="description" content="hello world">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TechBook">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2010/routeros-htb.html" itemprop="url">
-                  RouterOS学习之HTB限速详解
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2010-07-01T00:00:00+08:00">
-                2010-07-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/work/" itemprop="url" rel="index">
-                    <span itemprop="name">work</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>要想用routeros做限速，必须要知道以下几点：</p>
-</blockquote>
-<ol>
-<li>首先要知道自己要限制什么的速度，谁的速度，于是需要用的标记 ，即Mangle。</li>
-<li>其次要知道怎么限速，是限制上传，还是下载？</li>
-<li>最后要知道所做的限速是否成功，即需要知道如何检查！</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2010/routeros-htb.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1967,7 +1932,7 @@ Person.objects.raw(query)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
