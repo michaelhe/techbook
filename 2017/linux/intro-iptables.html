@@ -113,7 +113,7 @@ FILTER - 数据包过滤的防火墙功能
 Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我们可以理解为回调函数点，数据包到达这些位置的时候会主动调用我们的函数，使我">
 <meta property="og:image" content="http://img.ylkb.net/2017-03-26-14905020886552.jpg">
 <meta property="og:image" content="http://img.ylkb.net/2017-03-26-14905021053362.jpg">
-<meta property="og:updated_time" content="2017-03-26T05:56:00.000Z">
+<meta property="og:updated_time" content="2017-04-09T02:03:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iptables/netfilter 详解">
 <meta name="twitter:description" content="netfilter与iptables基础功能
@@ -418,6 +418,7 @@ Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我们可
 <li>FILTER - 数据包过滤的防火墙功能</li>
 </ul>
 <p>Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我们可以理解为回调函数点，数据包到达这些位置的时候会主动调用我们的函数，使我们有机会能在数据包路由的时候改变它们的方向、内容），这5个挂载点分别是<code>PRE_ROUTING</code>、<code>INPUT</code>、<code>OUTPUT</code>、<code>FORWARD</code>、<code>POST_ROUTING</code>。</p>
+<a id="more"></a>
 <p>Netfilter 所设置的规则是存放在内核内存中的，而 iptables 是一个应用层的应用程序，它通过 Netfilter 放出的接口来对存放在内核内存中的 XXtables（Netfilter的配置表）进行修改。这个XXtables由<code>表tables</code>、<code>链chains</code>、<code>规则rules</code>组成，iptables在应用层负责修改这个规则文件。</p>
 <p><img src="http://img.ylkb.net/2017-03-26-14905020886552.jpg" alt=""></p>
 <h3 id="filter表"><a href="#filter表" class="headerlink" title="filter表"></a>filter表</h3><blockquote>
