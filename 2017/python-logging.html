@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python,http," />
+  <meta name="keywords" content="python,logging," />
 
 
 
@@ -87,46 +87,19 @@
 
 
 
-<meta name="description" content="在python的世界里，有很多库被设计用来发起http访问。
-以下列举常用的方法：
-
-urllib，有urlencode方法，在urllib2中没有
-urllib2，可以接受Request对象，可以伪装agent，但是urllib不行
-urllib3，还没研究过
-httplib, 据说是urllib是在这个上面封装的
-httplib2
-requests
-
-据说以上最好用的还是Requests，Re">
+<meta name="description" content="简化方法
+12345678#!/usr/bin/python# -*- coding: UTF-8 -*-import logging# setup loggerlogger = logging.getLogger()logger.addHandler(logging.StreamHandler())logger.setLevel(logging.DEBUG)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用python发起http请求的方法">
-<meta property="og:url" content="http://yoursite.com/2017/http-request-by-python.html">
+<meta property="og:title" content="python日志记录模块">
+<meta property="og:url" content="http://yoursite.com/2017/python-logging.html">
 <meta property="og:site_name" content="TechBook">
-<meta property="og:description" content="在python的世界里，有很多库被设计用来发起http访问。
-以下列举常用的方法：
-
-urllib，有urlencode方法，在urllib2中没有
-urllib2，可以接受Request对象，可以伪装agent，但是urllib不行
-urllib3，还没研究过
-httplib, 据说是urllib是在这个上面封装的
-httplib2
-requests
-
-据说以上最好用的还是Requests，Re">
-<meta property="og:updated_time" content="2017-04-10T06:22:05.000Z">
+<meta property="og:description" content="简化方法
+12345678#!/usr/bin/python# -*- coding: UTF-8 -*-import logging# setup loggerlogger = logging.getLogger()logger.addHandler(logging.StreamHandler())logger.setLevel(logging.DEBUG)">
+<meta property="og:updated_time" content="2017-04-18T11:52:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用python发起http请求的方法">
-<meta name="twitter:description" content="在python的世界里，有很多库被设计用来发起http访问。
-以下列举常用的方法：
-
-urllib，有urlencode方法，在urllib2中没有
-urllib2，可以接受Request对象，可以伪装agent，但是urllib不行
-urllib3，还没研究过
-httplib, 据说是urllib是在这个上面封装的
-httplib2
-requests
-
-据说以上最好用的还是Requests，Re">
+<meta name="twitter:title" content="python日志记录模块">
+<meta name="twitter:description" content="简化方法
+12345678#!/usr/bin/python# -*- coding: UTF-8 -*-import logging# setup loggerlogger = logging.getLogger()logger.addHandler(logging.StreamHandler())logger.setLevel(logging.DEBUG)">
 
 
 
@@ -154,13 +127,13 @@ requests
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/http-request-by-python.html"/>
+  <link rel="canonical" href="http://yoursite.com/2017/python-logging.html"/>
 
 
 
 
 
-  <title> 利用python发起http请求的方法 | TechBook </title>
+  <title> python日志记录模块 | TechBook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -299,7 +272,7 @@ requests
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/http-request-by-python.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/python-logging.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Michael">
@@ -320,7 +293,7 @@ requests
             
             
               
-                利用python发起http请求的方法
+                python日志记录模块
               
             
           </h2>
@@ -335,8 +308,8 @@ requests
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T00:00:00+08:00">
-                2017-04-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T00:00:00+08:00">
+                2017-04-17
               </time>
             
 
@@ -376,7 +349,7 @@ requests
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/http-request-by-python.html#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/python-logging.html#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -408,19 +381,11 @@ requests
       
 
       
-        <p>在python的世界里，有很多库被设计用来发起http访问。</p>
-<p>以下列举常用的方法：</p>
-<ul>
-<li><strong>urllib</strong>，有urlencode方法，在urllib2中没有</li>
-<li><strong>urllib2</strong>，可以接受Request对象，可以伪装agent，但是urllib不行</li>
-<li><strong>urllib3</strong>，还没研究过</li>
-<li>httplib, 据说是urllib是在这个上面封装的</li>
-<li>httplib2</li>
-<li>requests</li>
-</ul>
-<p>据说以上最好用的还是Requests，<a href="http://cn.python-requests.org/zh_CN/latest/" target="_blank" rel="external">Requests使用文档</a> 传送门</p>
-<p>talk is cheap，show me the code!</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line">resp = requests.get(<span class="string">'http://www.badu.com'</span>)</div><div class="line"><span class="comment"># 如果是api请求，返回是json，则可以直接获取</span></div><div class="line">dict = resp.json()</div><div class="line"><span class="comment"># 如果是普通的http请求，则可以通过以下方式获取返回数据</span></div><div class="line">text = resp.text</div><div class="line"></div><div class="line"><span class="comment"># 以下的方法可以保存cookie</span></div><div class="line">s = requests.Session()</div><div class="line">s.get(<span class="string">'http://httpbin.org/get'</span>)</div><div class="line"></div><div class="line"><span class="comment"># get 请求</span></div><div class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: [<span class="string">'value2'</span>, <span class="string">'value3'</span>]&#125;</div><div class="line">r = requests.get(<span class="string">'http://httpbin.org/get'</span>, params=payload)</div><div class="line">print(r.url)</div><div class="line"><span class="comment"># http://httpbin.org/get?key1=value1&amp;key2=value2&amp;key2=value3</span></div><div class="line"></div><div class="line"><span class="comment"># post 请求</span></div><div class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: <span class="string">'value2'</span>&#125;</div><div class="line">r = requests.post(<span class="string">"http://httpbin.org/post"</span>, data=payload)</div><div class="line">print(r.text)</div></pre></td></tr></table></figure>
+        <p>简化方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line"># -*- coding: UTF-8 -*-</div><div class="line">import logging</div><div class="line"></div><div class="line"># setup logger</div><div class="line">logger = logging.getLogger()</div><div class="line">logger.addHandler(logging.StreamHandler())</div><div class="line">logger.setLevel(logging.DEBUG)</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>格式化方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line"># -*- coding: UTF-8 -*-</div><div class="line">import logging</div><div class="line"></div><div class="line"># setup logger</div><div class="line">logger = logging.getLogger()</div><div class="line">handler = logging.StreamHandler()</div><div class="line">fmt=&apos;%(asctime)s | %(levelname)-8s | %(message)s&apos;</div><div class="line">datefmt = &quot;%Y-%m-%d %H:%M:%S&quot;</div><div class="line">formatter = logging.Formatter(fmt,datefmt)   </div><div class="line">handler.setFormatter(formatter)</div><div class="line">logger.addHandler(handler)</div><div class="line">logger.setLevel(logging.DEBUG)</div><div class="line"></div><div class="line">logger.debug(&apos;debug message&apos;)</div><div class="line">logger.info(&apos;info message&apos;)</div><div class="line">logger.warn(&apos;warn message&apos;)</div><div class="line">logger.error(&apos;error message&apos;)</div><div class="line">logger.critical(&apos;critical message&apos;)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -452,7 +417,7 @@ requests
           
             <a href="/tags/python/" rel="tag"># python</a>
           
-            <a href="/tags/http/" rel="tag"># http</a>
+            <a href="/tags/logging/" rel="tag"># logging</a>
           
         </div>
       
@@ -465,8 +430,8 @@ requests
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/parse-html-by-python.html" rel="next" title="利用python解析html代码">
-                <i class="fa fa-chevron-left"></i> 利用python解析html代码
+              <a href="/2017/http-request-by-python.html" rel="next" title="利用python发起http请求的方法">
+                <i class="fa fa-chevron-left"></i> 利用python发起http请求的方法
               </a>
             
           </div>
@@ -475,8 +440,8 @@ requests
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/python-logging.html" rel="prev" title="python日志记录模块">
-                python日志记录模块 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/python-threading.html" rel="prev" title="python多线程编程">
+                python多线程编程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

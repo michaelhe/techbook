@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python,http," />
+  <meta name="keywords" content="python,threading," />
 
 
 
@@ -87,46 +87,25 @@
 
 
 
-<meta name="description" content="在python的世界里，有很多库被设计用来发起http访问。
-以下列举常用的方法：
+<meta name="description" content="python 启动一个线程有两种方式
 
-urllib，有urlencode方法，在urllib2中没有
-urllib2，可以接受Request对象，可以伪装agent，但是urllib不行
-urllib3，还没研究过
-httplib, 据说是urllib是在这个上面封装的
-httplib2
-requests
-
-据说以上最好用的还是Requests，Re">
+thread.start_new_thread( print_time, (“Thread-1”, 2, ) )
+thread1 = myThread(1, “Thread-1”, 1)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用python发起http请求的方法">
-<meta property="og:url" content="http://yoursite.com/2017/http-request-by-python.html">
+<meta property="og:title" content="python多线程编程">
+<meta property="og:url" content="http://yoursite.com/2017/python-threading.html">
 <meta property="og:site_name" content="TechBook">
-<meta property="og:description" content="在python的世界里，有很多库被设计用来发起http访问。
-以下列举常用的方法：
+<meta property="og:description" content="python 启动一个线程有两种方式
 
-urllib，有urlencode方法，在urllib2中没有
-urllib2，可以接受Request对象，可以伪装agent，但是urllib不行
-urllib3，还没研究过
-httplib, 据说是urllib是在这个上面封装的
-httplib2
-requests
-
-据说以上最好用的还是Requests，Re">
-<meta property="og:updated_time" content="2017-04-10T06:22:05.000Z">
+thread.start_new_thread( print_time, (“Thread-1”, 2, ) )
+thread1 = myThread(1, “Thread-1”, 1)">
+<meta property="og:updated_time" content="2017-04-18T01:15:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用python发起http请求的方法">
-<meta name="twitter:description" content="在python的世界里，有很多库被设计用来发起http访问。
-以下列举常用的方法：
+<meta name="twitter:title" content="python多线程编程">
+<meta name="twitter:description" content="python 启动一个线程有两种方式
 
-urllib，有urlencode方法，在urllib2中没有
-urllib2，可以接受Request对象，可以伪装agent，但是urllib不行
-urllib3，还没研究过
-httplib, 据说是urllib是在这个上面封装的
-httplib2
-requests
-
-据说以上最好用的还是Requests，Re">
+thread.start_new_thread( print_time, (“Thread-1”, 2, ) )
+thread1 = myThread(1, “Thread-1”, 1)">
 
 
 
@@ -154,13 +133,13 @@ requests
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/http-request-by-python.html"/>
+  <link rel="canonical" href="http://yoursite.com/2017/python-threading.html"/>
 
 
 
 
 
-  <title> 利用python发起http请求的方法 | TechBook </title>
+  <title> python多线程编程 | TechBook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -299,7 +278,7 @@ requests
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/http-request-by-python.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/python-threading.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Michael">
@@ -320,7 +299,7 @@ requests
             
             
               
-                利用python发起http请求的方法
+                python多线程编程
               
             
           </h2>
@@ -335,8 +314,8 @@ requests
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T00:00:00+08:00">
-                2017-04-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T00:00:00+08:00">
+                2017-04-17
               </time>
             
 
@@ -376,7 +355,7 @@ requests
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/http-request-by-python.html#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/python-threading.html#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -408,19 +387,25 @@ requests
       
 
       
-        <p>在python的世界里，有很多库被设计用来发起http访问。</p>
-<p>以下列举常用的方法：</p>
+        <p>python 启动一个线程有两种方式</p>
+<ol>
+<li>thread.start_new_thread( print_time, (“Thread-1”, 2, ) )</li>
+<li>thread1 = myThread(1, “Thread-1”, 1)</li>
+</ol>
+<a id="more"></a>
+<p>函数方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line"># -*- coding: UTF-8 -*-</div><div class="line"></div><div class="line">import thread</div><div class="line">import time</div><div class="line"></div><div class="line"># 为线程定义一个函数</div><div class="line">def print_time( threadName, delay):</div><div class="line">   count = 0</div><div class="line">   while count &lt; 5:</div><div class="line">      time.sleep(delay)</div><div class="line">      count += 1</div><div class="line">      print &quot;%s: %s&quot; % ( threadName, time.ctime(time.time()) )</div><div class="line"></div><div class="line"># 创建两个线程</div><div class="line">try:</div><div class="line">   thread.start_new_thread( print_time, (&quot;Thread-1&quot;, 2, ) )</div><div class="line">   thread.start_new_thread( print_time, (&quot;Thread-2&quot;, 4, ) )</div><div class="line">except:</div><div class="line">   print &quot;Error: unable to start thread&quot;</div><div class="line"></div><div class="line">while 1:</div><div class="line">   pass</div></pre></td></tr></table></figure>
+<p>类方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line"># -*- coding: UTF-8 -*-</div><div class="line"></div><div class="line">import threading</div><div class="line">import time</div><div class="line"></div><div class="line">exitFlag = 0</div><div class="line"></div><div class="line">class myThread (threading.Thread):   #继承父类threading.Thread</div><div class="line">    def __init__(self, threadID, name, counter):</div><div class="line">        threading.Thread.__init__(self)</div><div class="line">        self.threadID = threadID</div><div class="line">        self.name = name</div><div class="line">        self.counter = counter</div><div class="line">    def run(self):                   #把要执行的代码写到run函数里面 线程在创建后会直接运行run函数 </div><div class="line">        print &quot;Starting &quot; + self.name</div><div class="line">        print_time(self.name, self.counter, 5)</div><div class="line">        print &quot;Exiting &quot; + self.name</div><div class="line"></div><div class="line">def print_time(threadName, delay, counter):</div><div class="line">    while counter:</div><div class="line">        if exitFlag:</div><div class="line">            thread.exit()</div><div class="line">        time.sleep(delay)</div><div class="line">        print &quot;%s: %s&quot; % (threadName, time.ctime(time.time()))</div><div class="line">        counter -= 1</div><div class="line"></div><div class="line"># 创建新线程</div><div class="line">thread1 = myThread(1, &quot;Thread-1&quot;, 1)</div><div class="line">thread2 = myThread(2, &quot;Thread-2&quot;, 2)</div><div class="line"></div><div class="line"># 开启线程</div><div class="line">thread1.start()</div><div class="line">thread2.start()</div><div class="line"></div><div class="line">print &quot;Exiting Main Thread&quot;</div></pre></td></tr></table></figure>
 <ul>
-<li><strong>urllib</strong>，有urlencode方法，在urllib2中没有</li>
-<li><strong>urllib2</strong>，可以接受Request对象，可以伪装agent，但是urllib不行</li>
-<li><strong>urllib3</strong>，还没研究过</li>
-<li>httplib, 据说是urllib是在这个上面封装的</li>
-<li>httplib2</li>
-<li>requests</li>
+<li>参考链接：<br><a href="http://www.cnblogs.com/fuhuixiang/p/4103608.html" target="_blank" rel="external">多线程的socket服务器</a></li>
 </ul>
-<p>据说以上最好用的还是Requests，<a href="http://cn.python-requests.org/zh_CN/latest/" target="_blank" rel="external">Requests使用文档</a> 传送门</p>
-<p>talk is cheap，show me the code!</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line">resp = requests.get(<span class="string">'http://www.badu.com'</span>)</div><div class="line"><span class="comment"># 如果是api请求，返回是json，则可以直接获取</span></div><div class="line">dict = resp.json()</div><div class="line"><span class="comment"># 如果是普通的http请求，则可以通过以下方式获取返回数据</span></div><div class="line">text = resp.text</div><div class="line"></div><div class="line"><span class="comment"># 以下的方法可以保存cookie</span></div><div class="line">s = requests.Session()</div><div class="line">s.get(<span class="string">'http://httpbin.org/get'</span>)</div><div class="line"></div><div class="line"><span class="comment"># get 请求</span></div><div class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: [<span class="string">'value2'</span>, <span class="string">'value3'</span>]&#125;</div><div class="line">r = requests.get(<span class="string">'http://httpbin.org/get'</span>, params=payload)</div><div class="line">print(r.url)</div><div class="line"><span class="comment"># http://httpbin.org/get?key1=value1&amp;key2=value2&amp;key2=value3</span></div><div class="line"></div><div class="line"><span class="comment"># post 请求</span></div><div class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: <span class="string">'value2'</span>&#125;</div><div class="line">r = requests.post(<span class="string">"http://httpbin.org/post"</span>, data=payload)</div><div class="line">print(r.text)</div></pre></td></tr></table></figure>
+<p>在多线程编程中，t.setDaemon(True) / t.daemon = True</p>
+<p>在底层模块中，只要主线程技结束了，其他线程都会结束<br>如果setDaemon(True)，主线程结束，所有子线程都将结束<br>如果setDaemon(False)，主线程将等待该线程结束，等同于你调用线程的join方法</p>
+<p>join方法的作用是阻塞主进程，</p>
+<ul>
+<li>参考资料<br><a href="http://www.jianshu.com/p/0e4ff7c856d3" target="_blank" rel="external">python多线程解析</a></li>
+</ul>
 
       
     </div>
@@ -452,7 +437,7 @@ requests
           
             <a href="/tags/python/" rel="tag"># python</a>
           
-            <a href="/tags/http/" rel="tag"># http</a>
+            <a href="/tags/threading/" rel="tag"># threading</a>
           
         </div>
       
@@ -465,8 +450,8 @@ requests
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/parse-html-by-python.html" rel="next" title="利用python解析html代码">
-                <i class="fa fa-chevron-left"></i> 利用python解析html代码
+              <a href="/2017/python-logging.html" rel="next" title="python日志记录模块">
+                <i class="fa fa-chevron-left"></i> python日志记录模块
               </a>
             
           </div>
@@ -475,8 +460,8 @@ requests
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/python-logging.html" rel="prev" title="python日志记录模块">
-                python日志记录模块 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/python-queue.html" rel="prev" title="python队列模块">
+                python队列模块 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

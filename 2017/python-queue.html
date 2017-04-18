@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python,http," />
+  <meta name="keywords" content="python,queue," />
 
 
 
@@ -87,46 +87,22 @@
 
 
 
-<meta name="description" content="在python的世界里，有很多库被设计用来发起http访问。
-以下列举常用的方法：
-
-urllib，有urlencode方法，在urllib2中没有
-urllib2，可以接受Request对象，可以伪装agent，但是urllib不行
-urllib3，还没研究过
-httplib, 据说是urllib是在这个上面封装的
-httplib2
-requests
-
-据说以上最好用的还是Requests，Re">
+<meta name="description" content="创建一个“队列”对象
+import Queuemyqueue = Queue.Queue(maxsize = 10)
+Queue.Queue类即是一个队列的同步实现。队列长度可为无限或者有限。可通过Queue的构造函数的可选参数maxsize来设定队列长度。如果maxsize小于1就表示队列长度无限。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用python发起http请求的方法">
-<meta property="og:url" content="http://yoursite.com/2017/http-request-by-python.html">
+<meta property="og:title" content="python队列模块">
+<meta property="og:url" content="http://yoursite.com/2017/python-queue.html">
 <meta property="og:site_name" content="TechBook">
-<meta property="og:description" content="在python的世界里，有很多库被设计用来发起http访问。
-以下列举常用的方法：
-
-urllib，有urlencode方法，在urllib2中没有
-urllib2，可以接受Request对象，可以伪装agent，但是urllib不行
-urllib3，还没研究过
-httplib, 据说是urllib是在这个上面封装的
-httplib2
-requests
-
-据说以上最好用的还是Requests，Re">
-<meta property="og:updated_time" content="2017-04-10T06:22:05.000Z">
+<meta property="og:description" content="创建一个“队列”对象
+import Queuemyqueue = Queue.Queue(maxsize = 10)
+Queue.Queue类即是一个队列的同步实现。队列长度可为无限或者有限。可通过Queue的构造函数的可选参数maxsize来设定队列长度。如果maxsize小于1就表示队列长度无限。">
+<meta property="og:updated_time" content="2017-04-18T11:52:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用python发起http请求的方法">
-<meta name="twitter:description" content="在python的世界里，有很多库被设计用来发起http访问。
-以下列举常用的方法：
-
-urllib，有urlencode方法，在urllib2中没有
-urllib2，可以接受Request对象，可以伪装agent，但是urllib不行
-urllib3，还没研究过
-httplib, 据说是urllib是在这个上面封装的
-httplib2
-requests
-
-据说以上最好用的还是Requests，Re">
+<meta name="twitter:title" content="python队列模块">
+<meta name="twitter:description" content="创建一个“队列”对象
+import Queuemyqueue = Queue.Queue(maxsize = 10)
+Queue.Queue类即是一个队列的同步实现。队列长度可为无限或者有限。可通过Queue的构造函数的可选参数maxsize来设定队列长度。如果maxsize小于1就表示队列长度无限。">
 
 
 
@@ -154,13 +130,13 @@ requests
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/http-request-by-python.html"/>
+  <link rel="canonical" href="http://yoursite.com/2017/python-queue.html"/>
 
 
 
 
 
-  <title> 利用python发起http请求的方法 | TechBook </title>
+  <title> python队列模块 | TechBook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -299,7 +275,7 @@ requests
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/http-request-by-python.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/python-queue.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Michael">
@@ -320,7 +296,7 @@ requests
             
             
               
-                利用python发起http请求的方法
+                python队列模块
               
             
           </h2>
@@ -335,8 +311,8 @@ requests
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T00:00:00+08:00">
-                2017-04-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-18T00:00:00+08:00">
+                2017-04-18
               </time>
             
 
@@ -376,7 +352,7 @@ requests
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/http-request-by-python.html#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/python-queue.html#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -408,19 +384,20 @@ requests
       
 
       
-        <p>在python的世界里，有很多库被设计用来发起http访问。</p>
-<p>以下列举常用的方法：</p>
-<ul>
-<li><strong>urllib</strong>，有urlencode方法，在urllib2中没有</li>
-<li><strong>urllib2</strong>，可以接受Request对象，可以伪装agent，但是urllib不行</li>
-<li><strong>urllib3</strong>，还没研究过</li>
-<li>httplib, 据说是urllib是在这个上面封装的</li>
-<li>httplib2</li>
-<li>requests</li>
-</ul>
-<p>据说以上最好用的还是Requests，<a href="http://cn.python-requests.org/zh_CN/latest/" target="_blank" rel="external">Requests使用文档</a> 传送门</p>
-<p>talk is cheap，show me the code!</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line">resp = requests.get(<span class="string">'http://www.badu.com'</span>)</div><div class="line"><span class="comment"># 如果是api请求，返回是json，则可以直接获取</span></div><div class="line">dict = resp.json()</div><div class="line"><span class="comment"># 如果是普通的http请求，则可以通过以下方式获取返回数据</span></div><div class="line">text = resp.text</div><div class="line"></div><div class="line"><span class="comment"># 以下的方法可以保存cookie</span></div><div class="line">s = requests.Session()</div><div class="line">s.get(<span class="string">'http://httpbin.org/get'</span>)</div><div class="line"></div><div class="line"><span class="comment"># get 请求</span></div><div class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: [<span class="string">'value2'</span>, <span class="string">'value3'</span>]&#125;</div><div class="line">r = requests.get(<span class="string">'http://httpbin.org/get'</span>, params=payload)</div><div class="line">print(r.url)</div><div class="line"><span class="comment"># http://httpbin.org/get?key1=value1&amp;key2=value2&amp;key2=value3</span></div><div class="line"></div><div class="line"><span class="comment"># post 请求</span></div><div class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: <span class="string">'value2'</span>&#125;</div><div class="line">r = requests.post(<span class="string">"http://httpbin.org/post"</span>, data=payload)</div><div class="line">print(r.text)</div></pre></td></tr></table></figure>
+        <p>创建一个“队列”对象</p>
+<p>import Queue<br>myqueue = Queue.Queue(maxsize = 10)</p>
+<p>Queue.Queue类即是一个队列的同步实现。队列长度可为无限或者有限。可通过Queue的构造函数的可选参数maxsize来设定队列长度。如果maxsize小于1就表示队列长度无限。</p>
+<a id="more"></a>
+<p>将一个值放入队列中</p>
+<p>myqueue.put(10)</p>
+<p>调用队列对象的put()方法在队尾插入一个项目。put()有两个参数，第一个item为必需的，为插入项目的值；第二个block为可选参数，默认为1。如果队列当前为空且block为1，put()方法就使调用线程暂停,直到空出一个数据单元。如果block为0，put方法将引发Full异常。</p>
+<p>将一个值从队列中取出</p>
+<p>myqueue.get()</p>
+<p>调用队列对象的get()方法从队头删除并返回一个项目。可选参数为block，默认为True。如果队列为空且block为True，get()就使调用线程暂停，直至有项目可用。如果队列为空且block为False，队列将引发Empty异常。</p>
+<p>python queue模块有三种队列:<br>1、python queue模块的FIFO队列先进先出。<br>2、LIFO类似于堆。即先进后出。<br>3、还有一种是优先级队列级别越低越先出来。 </p>
+<p>针对这三种队列分别有三个构造函数:<br>1、class Queue.Queue(maxsize) FIFO<br>2、class Queue.LifoQueue(maxsize) LIFO<br>3、class Queue.PriorityQueue(maxsize) 优先级队列 </p>
+<p>介绍一下此包中的常用方法:</p>
+<p>Queue.qsize() 返回队列的大小<br>Queue.empty() 如果队列为空，返回True,反之False<br>Queue.full() 如果队列满了，返回True,反之False<br>Queue.full 与 maxsize 大小对应<br>Queue.get([block[, timeout]]) 获取队列，timeout等待时间<br>Queue.get_nowait() 相当Queue.get(False)<br>非阻塞 Queue.put(item) 写入队列，timeout等待时间<br>Queue.put_nowait(item) 相当Queue.put(item, False)<br>Queue.task_done() 在完成一项工作之后，Queue.task_done() 函数向任务已经完成的队列发送一个信号<br>Queue.join() 实际上意味着等到队列为空，再执行别的操作</p>
 
       
     </div>
@@ -452,7 +429,7 @@ requests
           
             <a href="/tags/python/" rel="tag"># python</a>
           
-            <a href="/tags/http/" rel="tag"># http</a>
+            <a href="/tags/queue/" rel="tag"># queue</a>
           
         </div>
       
@@ -465,8 +442,8 @@ requests
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/parse-html-by-python.html" rel="next" title="利用python解析html代码">
-                <i class="fa fa-chevron-left"></i> 利用python解析html代码
+              <a href="/2017/python-threading.html" rel="next" title="python多线程编程">
+                <i class="fa fa-chevron-left"></i> python多线程编程
               </a>
             
           </div>
@@ -474,10 +451,6 @@ requests
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/python-logging.html" rel="prev" title="python日志记录模块">
-                python日志记录模块 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
