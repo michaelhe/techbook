@@ -252,6 +252,7 @@
 
 
  </div>
+      <meta name="baidu-site-verification" content="VhGMYlpW6G" />
     </header>
 
     <main id="main" class="main">
@@ -517,7 +518,12 @@
 
       
         
-          <p>python 启动一个线程有两种方式</p>
+          <p>实现模块</p>
+<ol>
+<li>thread：多线程的底层支持模块，一般不建议使用；</li>
+<li>threading：对thread进行了封装，将一些线程的操作对象化</li>
+</ol>
+<p>python 启动一个线程有两种方式</p>
 <ol>
 <li>thread.start_new_thread( print_time, (“Thread-1”, 2, ) )</li>
 <li>thread1 = myThread(1, “Thread-1”, 1)</li>
@@ -816,8 +822,7 @@
 
       
         
-          
-            <p>在python的世界里，有很多库被设计用来发起http访问。</p>
+          <p>在python的世界里，有很多库被设计用来发起http访问。</p>
 <p>以下列举常用的方法：</p>
 <ul>
 <li><strong>urllib</strong>，有urlencode方法，在urllib2中没有</li>
@@ -827,11 +832,14 @@
 <li>httplib2</li>
 <li>requests</li>
 </ul>
-<p>据说以上最好用的还是Requests，<a href="http://cn.python-requests.org/zh_CN/latest/" target="_blank" rel="external">Requests使用文档</a> 传送门</p>
-<p>talk is cheap，show me the code!</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line">resp = requests.get(<span class="string">'http://www.badu.com'</span>)</div><div class="line"><span class="comment"># 如果是api请求，返回是json，则可以直接获取</span></div><div class="line">dict = resp.json()</div><div class="line"><span class="comment"># 如果是普通的http请求，则可以通过以下方式获取返回数据</span></div><div class="line">text = resp.text</div><div class="line"></div><div class="line"><span class="comment"># 以下的方法可以保存cookie</span></div><div class="line">s = requests.Session()</div><div class="line">s.get(<span class="string">'http://httpbin.org/get'</span>)</div><div class="line"></div><div class="line"><span class="comment"># get 请求</span></div><div class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: [<span class="string">'value2'</span>, <span class="string">'value3'</span>]&#125;</div><div class="line">r = requests.get(<span class="string">'http://httpbin.org/get'</span>, params=payload)</div><div class="line">print(r.url)</div><div class="line"><span class="comment"># http://httpbin.org/get?key1=value1&amp;key2=value2&amp;key2=value3</span></div><div class="line"></div><div class="line"><span class="comment"># post 请求</span></div><div class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: <span class="string">'value2'</span>&#125;</div><div class="line">r = requests.post(<span class="string">"http://httpbin.org/post"</span>, data=payload)</div><div class="line">print(r.text)</div></pre></td></tr></table></figure>
-
-          
+<p>据说以上最好用的还是Requests，<a href="http://cn.python-requests.org/zh_CN/latest/">Requests使用文档</a> 传送门<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/http-request-by-python.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -971,17 +979,18 @@
 
       
         
-          
-            <blockquote>
-<p>常用的用来解析html的库有 <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html" target="_blank" rel="external"><strong>BeautifulSoup</strong></a> 和 <a href="http://lxml.de/" target="_blank" rel="external"><strong>lxml</strong></a>。bs比较重，语法比较全面，lxml比较轻量，用xpath的语法。下面就来分别介绍下这两个库的用法</p>
+          <blockquote>
+<p>常用的用来解析html的库有 <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html"><strong>BeautifulSoup</strong></a> 和 <a href="http://lxml.de/"><strong>lxml</strong></a>。bs比较重，语法比较全面，lxml比较轻量，用xpath的语法。下面就来分别介绍下这两个库的用法</p>
 </blockquote>
 <p>首先，我们准备一段html代码</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">book</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Harry Potter<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">author</span>&gt;</span>J K. Rowling<span class="tag">&lt;/<span class="name">author</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">year</span>&gt;</span>2005<span class="tag">&lt;/<span class="name">year</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">price</span>&gt;</span>29.99<span class="tag">&lt;/<span class="name">price</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">book</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="lxml"><a href="#lxml" class="headerlink" title="lxml"></a>lxml</h3><p>xpath语法 <a href="http://www.w3school.com.cn/xpath/index.asp" target="_blank" rel="external">传送门</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line">html = etree.HTML(text)</div><div class="line"><span class="comment"># 以下为一个列表</span></div><div class="line">years = html.xpath(<span class="string">'//year'</span>)</div><div class="line"><span class="comment"># 找到某一个节点的文字</span></div><div class="line"><span class="keyword">print</span> years[<span class="number">0</span>].text</div></pre></td></tr></table></figure>
-<h3 id="pyquery"><a href="#pyquery" class="headerlink" title="pyquery"></a>pyquery</h3><p><a href="https://pythonhosted.org/pyquery/" target="_blank" rel="external">官方文档地址</a> | <a href="http://www.pyspider.cn/jiaocheng/pyspider-pyquery-14.html" target="_blank" rel="external">简易教程</a> | <a href="http://www.w3school.com.cn/jquery/jquery_selectors.asp" target="_blank" rel="external">jquery选择器</a></p>
-<h3 id="BeautifulSoup"><a href="#BeautifulSoup" class="headerlink" title="BeautifulSoup"></a>BeautifulSoup</h3>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/parse-html-by-python.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

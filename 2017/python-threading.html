@@ -87,7 +87,12 @@
 
 
 
-<meta name="description" content="python 启动一个线程有两种方式
+<meta name="description" content="实现模块
+
+thread：多线程的底层支持模块，一般不建议使用；
+threading：对thread进行了封装，将一些线程的操作对象化
+
+python 启动一个线程有两种方式
 
 thread.start_new_thread( print_time, (“Thread-1”, 2, ) )
 thread1 = myThread(1, “Thread-1”, 1)">
@@ -95,14 +100,24 @@ thread1 = myThread(1, “Thread-1”, 1)">
 <meta property="og:title" content="python多线程编程">
 <meta property="og:url" content="http://yoursite.com/2017/python-threading.html">
 <meta property="og:site_name" content="TechBook">
-<meta property="og:description" content="python 启动一个线程有两种方式
+<meta property="og:description" content="实现模块
+
+thread：多线程的底层支持模块，一般不建议使用；
+threading：对thread进行了封装，将一些线程的操作对象化
+
+python 启动一个线程有两种方式
 
 thread.start_new_thread( print_time, (“Thread-1”, 2, ) )
 thread1 = myThread(1, “Thread-1”, 1)">
-<meta property="og:updated_time" content="2017-04-18T01:15:21.000Z">
+<meta property="og:updated_time" content="2017-04-18T13:20:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python多线程编程">
-<meta name="twitter:description" content="python 启动一个线程有两种方式
+<meta name="twitter:description" content="实现模块
+
+thread：多线程的底层支持模块，一般不建议使用；
+threading：对thread进行了封装，将一些线程的操作对象化
+
+python 启动一个线程有两种方式
 
 thread.start_new_thread( print_time, (“Thread-1”, 2, ) )
 thread1 = myThread(1, “Thread-1”, 1)">
@@ -260,6 +275,7 @@ thread1 = myThread(1, “Thread-1”, 1)">
 
 
  </div>
+      <meta name="baidu-site-verification" content="VhGMYlpW6G" />
     </header>
 
     <main id="main" class="main">
@@ -387,7 +403,12 @@ thread1 = myThread(1, “Thread-1”, 1)">
       
 
       
-        <p>python 启动一个线程有两种方式</p>
+        <p>实现模块</p>
+<ol>
+<li>thread：多线程的底层支持模块，一般不建议使用；</li>
+<li>threading：对thread进行了封装，将一些线程的操作对象化</li>
+</ol>
+<p>python 启动一个线程有两种方式</p>
 <ol>
 <li>thread.start_new_thread( print_time, (“Thread-1”, 2, ) )</li>
 <li>thread1 = myThread(1, “Thread-1”, 1)</li>
@@ -406,6 +427,10 @@ thread1 = myThread(1, “Thread-1”, 1)">
 <ul>
 <li>参考资料<br><a href="http://www.jianshu.com/p/0e4ff7c856d3" target="_blank" rel="external">python多线程解析</a></li>
 </ul>
+<h4 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h4><p>一般来说，所有的线程都完成工作以后，程序才会退出。</p>
+<p>如果一个线程被设置为daemon，那么主线程退出的时候，它马上就退出了，这时候为了防止这种情况，可以调用join函数，线程调用join函数后，主线程就会等待子线程退出后才退出，而子线程执行的代码如果不能正常退出时那主线程也一直会等待，如果在join时加上一个超时时间，那主线程只等待设置的超时时间后主线程就退出。</p>
+<h4 id="线程间通信-event"><a href="#线程间通信-event" class="headerlink" title="线程间通信 - event"></a>线程间通信 - event</h4><p>可以通过event，event.set()可以向线程发出信号，event.is_set()判断event是否被set</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">event = threading.Event()</div><div class="line"></div><div class="line"><span class="comment"># 发出event被set的信号</span></div><div class="line">event.set()</div><div class="line"></div><div class="line"><span class="comment"># 判断event是否被set</span></div><div class="line">event.is_set()</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -511,8 +536,17 @@ thread1 = myThread(1, “Thread-1”, 1)">
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -588,6 +622,22 @@ thread1 = myThread(1, “Thread-1”, 1)">
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#守护进程"><span class="nav-number">1.</span> <span class="nav-text">守护进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程间通信-event"><span class="nav-number">2.</span> <span class="nav-text">线程间通信 - event</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
