@@ -7,9 +7,17 @@
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
+  <meta name="baidu-site-verification" content="VhGMYlpW6G" />
+  <meta name="google-site-verification" content="rJt3Fx3Ld2CkVpH4XkmQDkY2s8_KltXYH0oUJXOx3Nw" />
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -58,7 +66,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.css.network/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -68,47 +76,34 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="system,security,python," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <meta name="keywords" content="linux, django" />
 
 
 
 
 
 
-<meta name="description" content="安装1pip install --upgrade python-iptables
-引用12345import iptc# iptables 的表table = iptc.Table(iptc.Table.FILTER) # iptables 的链chain = iptc.Chain(table, &quot;INPUT&quot;)
-理论在python-iptables中，操作的对象是一个Rule
 
-rule = i">
-<meta property="og:type" content="article">
-<meta property="og:title" content="python-iptables 实战">
-<meta property="og:url" content="http://yoursite.com/2017/2017-03-26-python-iptables.html">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Share what you see">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TechBook">
+<meta property="og:url" content="http://tech.ylkb.net/page/3/index.html">
 <meta property="og:site_name" content="TechBook">
-<meta property="og:description" content="安装1pip install --upgrade python-iptables
-引用12345import iptc# iptables 的表table = iptc.Table(iptc.Table.FILTER) # iptables 的链chain = iptc.Chain(table, &quot;INPUT&quot;)
-理论在python-iptables中，操作的对象是一个Rule
-
-rule = i">
-<meta property="og:updated_time" content="2017-03-26T07:34:41.000Z">
+<meta property="og:description" content="Share what you see">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python-iptables 实战">
-<meta name="twitter:description" content="安装1pip install --upgrade python-iptables
-引用12345import iptc# iptables 的表table = iptc.Table(iptc.Table.FILTER) # iptables 的链chain = iptc.Chain(table, &quot;INPUT&quot;)
-理论在python-iptables中，操作的对象是一个Rule
-
-rule = i">
+<meta name="twitter:title" content="TechBook">
+<meta name="twitter:description" content="Share what you see">
 
 
 
@@ -136,13 +131,13 @@ rule = i">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/2017-03-26-python-iptables.html"/>
+  <link rel="canonical" href="http://tech.ylkb.net/page/3/"/>
 
 
 
 
 
-  <title> python-iptables 实战 | TechBook </title>
+  <title>TechBook</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -162,12 +157,15 @@ rule = i">
 
 
 
+
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -270,9 +268,9 @@ rule = i">
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -281,7 +279,7 @@ rule = i">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/2017-03-26-python-iptables.html">
+    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/linux/intro-iptables.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Michael">
@@ -299,13 +297,8 @@ rule = i">
         
         
           <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                python-iptables 实战
-              
-            
-          </h2>
+                
+                <a class="post-title-link" href="/2017/linux/intro-iptables.html" itemprop="url">iptables/netfilter 详解</a></h2>
         
 
         <div class="post-meta">
@@ -368,6 +361,152 @@ rule = i">
       </header>
     
 
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="netfilter与iptables"><a href="#netfilter与iptables" class="headerlink" title="netfilter与iptables"></a>netfilter与iptables</h1><h3 id="基础功能"><a href="#基础功能" class="headerlink" title="基础功能"></a>基础功能</h3><blockquote>
+<p>Netfilter是Linux操作系统核心层内部的一个数据包处理模块</p>
+</blockquote>
+<p>它有如下三个主要的功能：</p>
+<ul>
+<li>NAT - 网络地址转换</li>
+<li>MANGLE - 数据包内容修改</li>
+<li>FILTER - 数据包过滤的防火墙功能</li>
+</ul>
+<p>Netfilter 平台中制定了数据包的五个挂载点（Hook Point，我们可以理解为回调函数点，数据包到达这些位置的时候会主动调用我们的函数，使我们有机会能在数据包路由的时候改变它们的方向、内容），这5个挂载点分别是<code>PRE_ROUTING</code>、<code>INPUT</code>、<code>OUTPUT</code>、<code>FORWARD</code>、<code>POST_ROUTING</code>。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/linux/intro-iptables.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/linux/python-iptables.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael">
+      <meta itemprop="description" content="hello world">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TechBook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/linux/python-iptables.html" itemprop="url">python-iptables 实战</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-23T00:00:00+08:00">
+                2017-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
 
     <div class="post-body" itemprop="articleBody">
 
@@ -375,7 +514,9 @@ rule = i">
       
 
       
-        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install --upgrade python-iptables</div></pre></td></tr></table></figure>
+        
+          
+            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install --upgrade python-iptables</div></pre></td></tr></table></figure>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> iptc</div><div class="line"><span class="comment"># iptables 的表</span></div><div class="line">table = iptc.Table(iptc.Table.FILTER) </div><div class="line"><span class="comment"># iptables 的链</span></div><div class="line">chain = iptc.Chain(table, <span class="string">"INPUT"</span>)</div></pre></td></tr></table></figure>
 <h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><p>在<code>python-iptables</code>中，操作的对象是一个Rule</p>
 <blockquote>
@@ -402,82 +543,337 @@ rule = i">
 <p>iptables -A OUTPUT -p tcp –sport 1800</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> iptc</div><div class="line">table = iptc.Table(iptc.Table.FILTER)</div><div class="line">chain = iptc.Chain(table, <span class="string">"OUTPUT"</span>)</div><div class="line"></div><div class="line">rule = iptc.Rule()</div><div class="line">rule.protocol = <span class="string">"tcp"</span></div><div class="line">match = iptc.Match(rule,<span class="string">'tcp'</span>)</div><div class="line">match.protocol = <span class="string">'tcp'</span></div><div class="line">match.sport = <span class="string">"1800"</span></div><div class="line">rule.add_match(match)</div><div class="line">target = iptc.Target(rule, <span class="string">"ACCEPT"</span>)</div><div class="line">rule.target = target</div><div class="line">chain.insert_rule(rule)</div><div class="line"><span class="comment">#chain.delete_rule(rule)</span></div><div class="line">table.commit()</div></pre></td></tr></table></figure>
-<h3 id="情况规则和清空计数器"><a href="#情况规则和清空计数器" class="headerlink" title="情况规则和清空计数器"></a>情况规则和清空计数器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> iptc</div><div class="line">table = iptc.Table(iptc.Table.FILTER)</div><div class="line">input = iptc.Chain(table, <span class="string">"INPUT"</span>)</div><div class="line"><span class="comment"># 清空计数器</span></div><div class="line">input.zero_counters()</div><div class="line"><span class="comment"># 清空规则</span></div><div class="line">input.flush()</div></pre></td></tr></table></figure>
+<h3 id="清空规则和清空计数器"><a href="#清空规则和清空计数器" class="headerlink" title="清空规则和清空计数器"></a>清空规则和清空计数器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> iptc</div><div class="line">table = iptc.Table(iptc.Table.FILTER)</div><div class="line">input = iptc.Chain(table, <span class="string">"INPUT"</span>)</div><div class="line"><span class="comment"># 清空计数器</span></div><div class="line">input.zero_counters()</div><div class="line"><span class="comment"># 清空规则</span></div><div class="line">input.flush()</div></pre></td></tr></table></figure>
 
+          
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/system/" rel="tag"># system</a>
-          
-            <a href="/tags/security/" rel="tag"># security</a>
-          
-            <a href="/tags/python/" rel="tag"># python</a>
-          
-        </div>
+
       
 
       
-        
-      
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/django-models.html" rel="next" title="django模型实战">
-                <i class="fa fa-chevron-left"></i> django模型实战
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/skills-of-django.html" rel="prev" title="试试看django的中文">
-                试试看django的中文 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+      
 
-    <div class="post-spread">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2011/say-something-about-cloud.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael">
+      <meta itemprop="description" content="hello world">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TechBook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2011/say-something-about-cloud.html" itemprop="url">说说云服务的一些事</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2011-08-01T00:00:00+08:00">
+                2011-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/work/" itemprop="url" rel="index">
+                    <span itemprop="name">work</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>看了下，都快好几个月都没更新了，昨天突发奇想，看了下PR值，居然也有2了！但愿我后面的日子会好过点。</p>
+</blockquote>
+<p>没什么好说的，随便提出了几个关键词，跟大家分享下。</p>
+<h2 id="1-Linux"><a href="#1-Linux" class="headerlink" title="1. Linux"></a>1. Linux</h2><p>我最近的工作都是跟linux打交到，学了很多东西，跟自学的时候差别很大，因为后面有人用枪顶着。</p>
+<p>Shell：很好很强大的一个工具，我不想把他定义为语言，但只是工具，处理手中杂事的一种高效的工具，如果有一件事情你需要做两边以上，那么写一个shell来完成把～～</p>
+<p>Ubuntu：上周开始试着放弃windows，改用linux，对我个人而言确实方便了很多，加上Vbox来处理那些linux无法完成的任务，其余的时间就都跟它度过了。本来在办公室安装的是10.10，但回家体验了下11.04以后，果断换成了Unity界面，符合我的风格。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2011/say-something-about-cloud.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
-  </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2010/routeros-htb.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael">
+      <meta itemprop="description" content="hello world">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TechBook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2010/routeros-htb.html" itemprop="url">RouterOS学习之HTB限速详解</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2010-07-01T00:00:00+08:00">
+                2010-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/work/" itemprop="url" rel="index">
+                    <span itemprop="name">work</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>要想用routeros做限速，必须要知道以下几点：</p>
+</blockquote>
+<ol>
+<li>首先要知道自己要限制什么的速度，谁的速度，于是需要用的标记 ，即Mangle。</li>
+<li>其次要知道怎么限速，是限制上传，还是下载？</li>
+<li>最后要知道所做的限速是否成功，即需要知道如何检查！</li>
+</ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2010/routeros-htb.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
 
 
           </div>
@@ -485,10 +881,6 @@ rule = i">
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -508,17 +900,8 @@ rule = i">
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -533,7 +916,7 @@ rule = i">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -544,7 +927,7 @@ rule = i">
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -555,7 +938,7 @@ rule = i">
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -582,7 +965,7 @@ rule = i">
             <ul class="links-of-blogroll-list">
               
                 <li class="links-of-blogroll-item">
-                  <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  <a href="http://blog.ylkb.net/" title="blog" target="_blank">blog</a>
                 </li>
               
             </ul>
@@ -594,22 +977,6 @@ rule = i">
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">2.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理论"><span class="nav-number">3.</span> <span class="nav-text">理论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战"><span class="nav-number">4.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看当前的iptables列表"><span class="nav-number">4.1.</span> <span class="nav-text">查看当前的iptables列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在INPUT表中新增-删除一条规则"><span class="nav-number">4.2.</span> <span class="nav-text">在INPUT表中新增/删除一条规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#情况规则和清空计数器"><span class="nav-number">4.3.</span> <span class="nav-text">情况规则和清空计数器</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -648,6 +1015,14 @@ rule = i">
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
 
         
       </div>
@@ -685,6 +1060,12 @@ rule = i">
 
 
 
+
+
+
+
+
+
   
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
@@ -707,25 +1088,25 @@ rule = i">
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
+  
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+  
+
+  
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -744,6 +1125,22 @@ rule = i">
 
 
   
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "b5562d3495a247c38d0aef142f9ce201",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
 
 
 
@@ -757,16 +1154,7 @@ rule = i">
 
   
 
-
-
-
-
-
   
-
-
-
-
 
   
 

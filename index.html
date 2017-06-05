@@ -15,6 +15,12 @@
 
 
 
+
+
+
+
+
+
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
@@ -70,7 +76,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="linux, django" />
@@ -82,7 +88,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
@@ -131,12 +137,13 @@
 
 
 
-  <title> TechBook </title>
+  <title>TechBook</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
+
 
 
 
@@ -272,6 +279,1014 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/intro-elasticsearch.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael">
+      <meta itemprop="description" content="hello world">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TechBook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/intro-elasticsearch.html" itemprop="url">elasticsearch 简介</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T00:00:00+08:00">
+                2017-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/service/" itemprop="url" rel="index">
+                    <span itemprop="name">service</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><ul>
+<li>操作系统：centos7</li>
+<li>测试版本：5.4.0</li>
+<li>es + kibana + x-pack</li>
+</ul>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># 先下载java1.8的包，es5.4.0依赖jdk1.8</div><div class="line">yum install java-1.8.0-openjdk.x86_64</div><div class="line"># 下载es的rpm包</div><div class="line">wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.0.rpm</div><div class="line"># 下载kibana的rpm包</div><div class="line">wget https://artifacts.elastic.co/downloads/kibana/kibana-5.4.0-x86_64.rpm</div><div class="line"># 安装es</div><div class="line">rpm -i elasticsearch-5.4.0.rpm</div><div class="line"># 安装kibana</div><div class="line">rpm -i kibana-5.4.0-x86_64.rpm</div><div class="line"># 安装x-pack</div><div class="line">/usr/share/elasticsearch/bin/elasticsearch-plugin install x-pack</div><div class="line">/usr/share/kibana/bin/kibana-plugin install x-pack</div><div class="line"># 启动 es</div><div class="line">systemctl start elasticsearch.service</div><div class="line"># 启动 kibana</div><div class="line">service kibana start</div></pre></td></tr></table></figure>
+<h2 id="安装以后的机器状态"><a href="#安装以后的机器状态" class="headerlink" title="安装以后的机器状态"></a>安装以后的机器状态</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@bk-elk ~]# netstat -nltp</div><div class="line">Active Internet connections (only servers)</div><div class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name</div><div class="line">tcp        0      0 127.0.0.1:9200          0.0.0.0:*               LISTEN      15186/java</div><div class="line">tcp        0      0 127.0.0.1:9300          0.0.0.0:*               LISTEN      15186/java</div><div class="line">tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      794/sshd</div><div class="line">tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN      15285/node</div><div class="line">tcp6       0      0 :::22                   :::*                    LISTEN      794/sshd</div></pre></td></tr></table></figure>
+<ul>
+<li>9200: http协议的RESTful接口</li>
+<li>9300: tcp通信端口，集群之间的通信走9300</li>
+<li>5601: kibana监听的端口</li>
+<li>默认的用户名是elastc，密码是changeme</li>
+</ul>
+<h1 id="ES的一些概念"><a href="#ES的一些概念" class="headerlink" title="ES的一些概念"></a>ES的一些概念</h1><ol>
+<li>集群 Cluster: 一般由多台物理机组成，通过配置一个相同的cluster_name，互相发现组成一个集群</li>
+<li>节点 Node: 同一个集群中的其中一个物理机叫一个Node，节点</li>
+<li>主分片 Primary shard: 索引的一个物理子集，同一个索引在物理上可以切多个分片，分布在不同的节点上</li>
+<li>副本分片 Replica shard: 每个主分片会有一个或者多个副本，个数是由用户自己配置的</li>
+<li>索引 Index: 逻辑概念，一个可检索的文档对象的合集，与mysql中的database的概念对应，一个集群中可以建立多个索引，一般来说数据大的话会按照天建索引</li>
+<li>类型 Type: 索引下一级的概念 ，相当于db中的table，实际引用中一个索引就建了一个type</li>
+<li>文档 Document: es中可以被检索的基本单位，相当于数据库中的row，一条记录</li>
+<li>字段 Field: 相当于数据库中的column，es中每个文档是以json形式存储的，一个文档可以被看成多个字段的集合</li>
+<li>映射 Mapping: 相当于数据库中的schema，用来约束字段的类型，不过，在es中maapping可以不用显示地制定，可以根据文档数据自动创建</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/intro-consul.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael">
+      <meta itemprop="description" content="hello world">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TechBook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/intro-consul.html" itemprop="url">Consul 实战</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-23T00:00:00+08:00">
+                2017-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/service/" itemprop="url" rel="index">
+                    <span itemprop="name">service</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="consul有很多个组件，为基础设施提供服务发现和服务配置的工具，具有以下关键特性："><a href="#consul有很多个组件，为基础设施提供服务发现和服务配置的工具，具有以下关键特性：" class="headerlink" title="consul有很多个组件，为基础设施提供服务发现和服务配置的工具，具有以下关键特性："></a>consul有很多个组件，为基础设施提供服务发现和服务配置的工具，具有以下关键特性：</h1><ol>
+<li>服务发现</li>
+<li>健康检查</li>
+<li>KV存储</li>
+<li>多数据中心</li>
+</ol>
+<h1 id="基础架构"><a href="#基础架构" class="headerlink" title="基础架构"></a>基础架构</h1><ul>
+<li>consul-agent 负责节点本身和节点上服务的健康检查</li>
+<li>consul-agent与一个或者多个consul-server交互</li>
+<li>consul-server 用于存放和复制数据</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/bigdata/data-anasiye.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael">
+      <meta itemprop="description" content="hello world">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TechBook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/bigdata/data-anasiye.html" itemprop="url">大数据分析入门</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T00:00:00+08:00">
+                2017-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/bigdata/" itemprop="url" rel="index">
+                    <span itemprop="name">bigdata</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Anaconda清华镜像站：<br><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="external">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/bigdata/devops-on-big-data.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael">
+      <meta itemprop="description" content="hello world">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TechBook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/bigdata/devops-on-big-data.html" itemprop="url">用大数据思维做运维监控</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-02T00:00:00+08:00">
+                2017-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/bigdata/" itemprop="url" rel="index">
+                    <span itemprop="name">bigdata</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="三个层面"><a href="#三个层面" class="headerlink" title="三个层面"></a>三个层面</h3><ol>
+<li>工程数据，譬如工单数量，SLA可用性，基础资源，故障率，报警统计</li>
+<li>业务数据，譬如业务DashBoard,Trace调用链，业务拓扑切换，业务指标，业务基准数据，业务日志挖掘</li>
+<li>数据可视化</li>
+</ol>
+<h3 id="大数据的组成"><a href="#大数据的组成" class="headerlink" title="大数据的组成"></a>大数据的组成</h3><ol>
+<li>数据本身；</li>
+<li>流水线(支撑数据分析的数据处理平台)；</li>
+<li>挖掘加工(分析数据内部特征关联性规律,也就是机器学习)；</li>
+<li>产品(最终的呈现形态)</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/python-tornado.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael">
+      <meta itemprop="description" content="hello world">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TechBook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/python-tornado.html" itemprop="url">python tornado实战</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-01T00:00:00+08:00">
+                2017-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>tornado是一个很牛X的异步网络框架，内置了高性能的web服务器，可以很方便的写很多web服务<br>不过今天我要用它来实现非web类的网络应用</p>
+</blockquote>
+<h3 id="科普"><a href="#科普" class="headerlink" title="科普"></a>科普</h3><p>首先，来了解下tornado的eventloop，在不同系统中，会用不同的方法，epoll(linux)和kqueue(BSD/MacOS)，两者都不行的话退回到select模式。<br>顺便科普下，水平触发和边缘触发。python下默认就是LT模式，但是可以通过指定select.EPOLLET设置成ET模式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">epoll.register(connection.fileno(), select.EPOLLIN)</div><div class="line">修改为</div><div class="line">epoll.register(connection.fileno(), select.EPOLLIN|select.EPOLLET)</div></pre></td></tr></table></figure>
+<p>Level_triggered(水平触发)：当被监控的文件描述符上有可读写事件发生时，epoll_wait()会通知处理程序去读写。如果这次没有把数据一次性全部读写完(如读写缓冲区太小)，那么下次调用 epoll_wait()时，它还会通知你在上没读写完的文件描述符上继续读写，当然如果你一直不去读写，它会一直通知你！！！如果系统中有大量你不需要读写的就绪文件描述符，而它们每次都会返回，这样会大大降低处理程序检索自己关心的就绪文件描述符的效率！！！</p>
+<p>Edge_triggered(边缘触发)：当被监控的文件描述符上有可读写事件发生时，epoll_wait()会通知处理程序去读写。如果这次没有把数据全部读写完(如读写缓冲区太小)，那么下次调用epoll_wait()时，它不会通知你，也就是它只会通知你一次，直到该文件描述符上出现第二次可读写事件才会通知你！！！这种模式比水平触发效率高，系统不会充斥大量你不关心的就绪文件描述符！！！</p>
+<h3 id="tornado实战"><a href="#tornado实战" class="headerlink" title="tornado实战"></a>tornado实战</h3><h4 id="初始化ioloop"><a href="#初始化ioloop" class="headerlink" title="初始化ioloop"></a>初始化ioloop</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> tornado <span class="keyword">import</span> ioloop</div><div class="line">io_loop = ioloop.IOLoop.current()</div><div class="line"><span class="comment"># 或者下面的方式</span></div><div class="line">io_loop = ioloop.IOLoop.instance()</div><div class="line"></div><div class="line"><span class="comment"># 为fd的改变增加处理方法，handler表示用什么处理，events表示发生了什么事</span></div><div class="line"><span class="comment"># events的取值：IOLoop.READ, IOLoop.WRITE, IOLoop.ERROR</span></div><div class="line">io_loop.add_handler(fd, handler, events)</div><div class="line"><span class="comment"># 返回的时候会调用 handler(fd, events)</span></div><div class="line"><span class="comment"># 启动这个loop</span></div><div class="line">io_loop.start()</div><div class="line"></div><div class="line"><span class="comment"># 当需要往外写的时候，转成IOLoop.WRITE</span></div><div class="line">ioloop.update_handler(fd, IOLoop.WRITE)</div><div class="line"><span class="comment"># 当fd被关闭了，则从ioloop干掉这个</span></div><div class="line">ioloop.remove_handler(fd)</div></pre></td></tr></table></figure>
+<h4 id="database模块"><a href="#database模块" class="headerlink" title="database模块"></a>database模块</h4><p>从tornado3.0版本开始，框架不再提供database模块，改成torndb这个项目单独来运作。</p>
+<p>项目地址：<a href="https://github.com/bdarnell/torndb" target="_blank" rel="external">https://github.com/bdarnell/torndb</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/python-socket.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael">
+      <meta itemprop="description" content="hello world">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TechBook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/python-socket.html" itemprop="url">python socket实战</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-20T00:00:00+08:00">
+                2017-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_style_rules/" target="_blank" rel="external">python代码规范</a></p>
+<p>module_name, package_name, ClassName, method_name, ExceptionName, function_name, GLOBAL_VAR_NAME, instance_var_name, function_parameter_name, local_var_name.</p>
+<p>IBM通信连接技术：<a href="https://www.ibm.com/developerworks/cn/aix/library/0807_liugb_tcpip/" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/aix/library/0807_liugb_tcpip/</a></p>
+<p>socket基础知识学完以后，必然会遇到”粘包”和”分包”的问题</p>
+<h3 id="struct结构体"><a href="#struct结构体" class="headerlink" title="struct结构体"></a>struct结构体</h3><p>当你需要在socket之间传输数据的时候，最好将数据打包，这样便于数据的交换。struct就是用来处理c语言中的结构体</p>
+<p>最重要的三个函数：</p>
+<ul>
+<li>pack(fmt, v1, v2, …)     按照给定的格式(fmt)，把数据封装成字符串(实际上是类似于c结构体的字节流)</li>
+<li>unpack(fmt, string)       按照给定的格式(fmt)解析字节流string，返回解析出来的tuple</li>
+<li>calcsize(fmt)                 计算给定的格式(fmt)占用多少字节的内存</li>
+</ul>
+<p>下面再来说说fmt格式’!3I’：</p>
+<ul>
+<li>! 表示是网络字节序</li>
+<li>3 表示要打包3个vaule</li>
+<li>I 表示 unsiged int，无符号整数，取值区间为<code>[0,4294967295]</code> 0xFFFFFFFF == 4294967295</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/elasticsearch-api.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael">
+      <meta itemprop="description" content="hello world">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TechBook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/elasticsearch-api.html" itemprop="url">elasticsearch API实战</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-20T00:00:00+08:00">
+                2017-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>ES的存储方式对比RDB</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Relational DB -&gt; Databases -&gt; Tables -&gt; Rows -&gt; Columns</div><div class="line">Elasticsearch -&gt; Indices   -&gt; Types  -&gt; Documents -&gt; Fields</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[root@VM_120_247_centos bk_bkdata_api]# curl http://10.105.120.247:8080/_cat/indices?v</div><div class="line">health status index                                   pri rep docs.count docs.deleted store.size pri.store.size</div><div class="line">yellow open   3_bk_log_search_log_search_app_20170421   5   1          0            0       795b           795b</div><div class="line">yellow open   2_bk_log_search_log_search_app_20170422   5   1          0            0       795b           795b</div><div class="line">yellow open   3_bk_log_search_log_search_app_20170420   5   1        194            0    210.6kb        210.6kb</div><div class="line">yellow open   2_bk_log_search_log_search_app_20170421   5   1          0            0       795b           795b</div><div class="line">yellow open   2_bk_log_search_log_search_app_20170420   5   1        673            0    233.9kb        233.9kb</div><div class="line">yellow open   3_bk_log_search_log_search_app_20170422   5   1          0            0       795b           795b</div><div class="line"></div><div class="line">[root@VM_120_247_centos bk_bkdata_api]# curl http://10.105.120.247:8080/_cat/health?v</div><div class="line">epoch      timestamp cluster      status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent</div><div class="line">1492677247 16:34:07  bk-bkdata-es yellow          1         1     30  30    0    0       30             0                  -                 50.0%</div><div class="line"></div><div class="line"></div><div class="line">[root@VM_120_247_centos bk_bkdata_api]# curl http://10.105.120.247:8080/_cat/nodes?v</div><div class="line">host           ip             heap.percent ram.percent load node.role master name</div><div class="line">10.105.120.247 10.105.120.247           27          83 0.46 d         *      bk-bkdata-es-node</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/python-queue.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -290,16 +1305,8 @@
         
         
           <h2 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/python-queue.html" itemprop="url">
-                  python队列模块
-                </a>
-              
-            
-          </h2>
+                <a class="post-title-link" href="/2017/python-queue.html" itemprop="url">python队列模块</a></h2>
         
 
         <div class="post-meta">
@@ -362,7 +1369,6 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -376,162 +1382,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/python-queue.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/python-threading.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Michael">
-      <meta itemprop="description" content="hello world">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TechBook">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/python-threading.html" itemprop="url">
-                  python多线程编程
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T00:00:00+08:00">
-                2017-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>实现模块</p>
-<ol>
-<li>thread：多线程的底层支持模块，一般不建议使用；</li>
-<li>threading：对thread进行了封装，将一些线程的操作对象化</li>
-</ol>
-<p>python 启动一个线程有两种方式</p>
-<ol>
-<li>thread.start_new_thread( print_time, (“Thread-1”, 2, ) )</li>
-<li>thread1 = myThread(1, “Thread-1”, 1)</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/python-threading.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -595,16 +1445,8 @@
         
         
           <h2 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/python-logging.html" itemprop="url">
-                  python日志记录模块
-                </a>
-              
-            
-          </h2>
+                <a class="post-title-link" href="/2017/python-logging.html" itemprop="url">python日志记录模块</a></h2>
         
 
         <div class="post-meta">
@@ -667,7 +1509,6 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -725,7 +1566,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/http-request-by-python.html">
+    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/python-threading.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Michael">
@@ -743,16 +1584,8 @@
         
         
           <h2 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/http-request-by-python.html" itemprop="url">
-                  利用python发起http请求的方法
-                </a>
-              
-            
-          </h2>
+                <a class="post-title-link" href="/2017/python-threading.html" itemprop="url">python多线程编程</a></h2>
         
 
         <div class="post-meta">
@@ -764,8 +1597,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T00:00:00+08:00">
-                2017-04-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T00:00:00+08:00">
+                2017-04-17
               </time>
             
 
@@ -815,7 +1648,6 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -823,942 +1655,19 @@
 
       
         
-          <p>在python的世界里，有很多库被设计用来发起http访问。</p>
-<p>以下列举常用的方法：</p>
-<ul>
-<li><strong>urllib</strong>，有urlencode方法，在urllib2中没有</li>
-<li><strong>urllib2</strong>，可以接受Request对象，可以伪装agent，但是urllib不行</li>
-<li><strong>urllib3</strong>，还没研究过</li>
-<li>httplib, 据说是urllib是在这个上面封装的</li>
-<li>httplib2</li>
-<li>requests</li>
-</ul>
-<p>据说以上最好用的还是Requests，<a href="http://cn.python-requests.org/zh_CN/latest/">Requests使用文档</a> 传送门<br>
+          <p>实现模块</p>
+<ol>
+<li>thread：多线程的底层支持模块，一般不建议使用；</li>
+<li>threading：对thread进行了封装，将一些线程的操作对象化</li>
+</ol>
+<p>python 启动一个线程有两种方式</p>
+<ol>
+<li>thread.start_new_thread( print_time, (“Thread-1”, 2, ) )</li>
+<li>thread1 = myThread(1, “Thread-1”, 1)</li>
+</ol>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/http-request-by-python.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/parse-html-by-python.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Michael">
-      <meta itemprop="description" content="hello world">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TechBook">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/parse-html-by-python.html" itemprop="url">
-                  利用python解析html代码
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T00:00:00+08:00">
-                2017-04-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>常用的用来解析html的库有 <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html"><strong>BeautifulSoup</strong></a> 和 <a href="http://lxml.de/"><strong>lxml</strong></a>。bs比较重，语法比较全面，lxml比较轻量，用xpath的语法。下面就来分别介绍下这两个库的用法</p>
-</blockquote>
-<p>首先，我们准备一段html代码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">book</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Harry Potter<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">author</span>&gt;</span>J K. Rowling<span class="tag">&lt;/<span class="name">author</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">year</span>&gt;</span>2005<span class="tag">&lt;/<span class="name">year</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">price</span>&gt;</span>29.99<span class="tag">&lt;/<span class="name">price</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">book</span>&gt;</span></div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/parse-html-by-python.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/free_software_licenses.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Michael">
-      <meta itemprop="description" content="hello world">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TechBook">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/free_software_licenses.html" itemprop="url">
-                  开源许可证
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-07T00:00:00+08:00">
-                2017-04-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>转自 <a href="http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html</a></p>
-</blockquote>
-<p><img src="http://img.ylkb.net/2017-04-07-14915329366826.jpg" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/collect.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Michael">
-      <meta itemprop="description" content="hello world">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TechBook">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/collect.html" itemprop="url">
-                  收藏一些
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-04T00:00:00+08:00">
-                2017-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="一些收藏用的"><a href="#一些收藏用的" class="headerlink" title="一些收藏用的"></a>一些收藏用的</h4><ul>
-<li><a href="https://maicong.me/t/203#comments" target="_blank" rel="external">https://maicong.me/t/203#comments</a></li>
-<li><a href="http://op.baidu.com/2014/07/bash%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E5%92%8C%E6%8A%80%E5%B7%A7/" target="_blank" rel="external">http://op.baidu.com/2014/07/bash%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E5%92%8C%E6%8A%80%E5%B7%A7/</a></li>
-<li><a href="https://ttt.tt/185/" target="_blank" rel="external">https://ttt.tt/185/</a> 牛逼的人物在哪都会这么牛逼</li>
-<li><a href="http://pandacafe.net/post/988" target="_blank" rel="external">http://pandacafe.net/post/988</a>  给一些程序设置代理</li>
-<li><a href="http://codingpub.github.io/archives/" target="_blank" rel="external">http://codingpub.github.io/archives/</a>  这家伙写爬虫的</li>
-<li><a href="http://cuiqingcai.com/4048.html" target="_blank" rel="external">http://cuiqingcai.com/4048.html</a> 也是一个写爬虫的</li>
-<li><a href="http://zhuoqiang.me/password-storage-and-python-example.html" target="_blank" rel="external">http://zhuoqiang.me/password-storage-and-python-example.html</a> 关于密码写的太到位</li>
-<li><a href="http://zhuoqiang.me/password-transport.html" target="_blank" rel="external">http://zhuoqiang.me/password-transport.html</a>  上面的姊妹篇，密码传输留存</li>
-<li><a href="http://bobby-tables.com/" target="_blank" rel="external">http://bobby-tables.com/</a>  专门对抗sql注入的小网站</li>
-<li><a href="http://lazynight.me/3115.html" target="_blank" rel="external">http://lazynight.me/3115.html</a>  解决Supervisor不能真正停止django进程</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/django-models.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Michael">
-      <meta itemprop="description" content="hello world">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TechBook">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/django-models.html" itemprop="url">
-                  django模型实战
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-26T00:00:00+08:00">
-                2017-03-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="入门实例"><a href="#入门实例" class="headerlink" title="入门实例"></a>入门实例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## myapp/models.py</span></div><div class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(models.Model)</span>:</span></div><div class="line">    first_name = models.CharField(max_length=<span class="number">30</span>)</div><div class="line">    last_name = models.CharField(max_length=<span class="number">30</span>)</div></pre></td></tr></table></figure>
-<p><code>first_name</code> 和 <code>last_name</code> 为数据表的两个字段</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/django-models.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/linux/skills-of-linux.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Michael">
-      <meta itemprop="description" content="hello world">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TechBook">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/linux/skills-of-linux.html" itemprop="url">
-                  skills of linux
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-25T22:36:14+08:00">
-                2017-03-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="终端使用技巧"><a href="#终端使用技巧" class="headerlink" title="终端使用技巧"></a>终端使用技巧</h4><ul>
-<li>查看剪切板历史 command+shift+h</li>
-<li>删除（清除）一行 ： ==control +u==</li>
-<li>删除当前的字符 ： <strong>control + d</strong></li>
-<li>删除之前的字符 ： control + h</li>
-<li>删除之前的单词 ： ==control + w==</li>
-<li>删除之后的文本 ： control + k</li>
-<li>将光标移到行尾 ： ==control + e==</li>
-<li>将光标移到行首 ： ==control +a==</li>
-<li>交换光标处文本 ： control + t</li>
-<li>清除屏幕 ： command + r || control + l</li>
-<li>搜索历史命令 : control + r</li>
-</ul>
-<h4 id="sudo-files配置技巧"><a href="#sudo-files配置技巧" class="headerlink" title="sudo files配置技巧"></a>sudo files配置技巧</h4><blockquote>
-<p>本篇实验环境在<code>centos7</code>下进行</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">michael ALL=(root) NOPASSWD:  ALL</div></pre></td></tr></table></figure>
-<p>加上如上行就可以让michael登录以后sudo任何东西不再需要输入密码</p>
-<h4 id="用python来管理iptables"><a href="#用python来管理iptables" class="headerlink" title="用python来管理iptables"></a>用python来管理iptables</h4><blockquote>
-<p>本篇实验环境在<code>centos7</code>下进行</p>
-</blockquote>
-<ul>
-<li>安装</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install --upgrade python-iptables</div></pre></td></tr></table></figure>
-<h4 id="爬虫框架"><a href="#爬虫框架" class="headerlink" title="爬虫框架"></a>爬虫框架</h4><ul>
-<li>Cola: 一个分布式爬虫框架</li>
-<li>scrapy: 百度就是</li>
-<li><a href="https://github.com/binux/pyspider" target="_blank" rel="external">pyspider</a>: 可视化，挺好用的<br><img src="http://img.ylkb.net/2017-04-10-14918052445357.jpg" alt=""></li>
-<li>pysider中文网：<a href="http://www.pyspider.cn/" target="_blank" rel="external">http://www.pyspider.cn/</a></li>
-</ul>
-<h4 id="supervisord"><a href="#supervisord" class="headerlink" title="supervisord"></a>supervisord</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[program:ssserver]</div><div class="line">command=/bin/ssserver -c ./ss.json --manager-address 127.0.0.1:28001</div><div class="line">redirect_stderr = true</div><div class="line">stdout_logfile = /home/apps/ss-run.log</div><div class="line">autostart=true</div><div class="line">autorestart=true</div><div class="line">user=apps</div><div class="line">directory=/home/apps/ssserver/</div><div class="line">stdout_logfile_maxbytes = 10MB</div><div class="line">stdout_logfile_backups = 2</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://tech.ylkb.net/2017/linux/git-guide.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Michael">
-      <meta itemprop="description" content="hello world">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TechBook">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/linux/git-guide.html" itemprop="url">
-                  一张图让你了解git
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-25T22:36:14+08:00">
-                2017-03-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/work/" itemprop="url" rel="index">
-                    <span itemprop="name">work</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>一分钟git指引</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/linux/git-guide.html#more" rel="contents">
+            <a class="btn" href="/2017/python-threading.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1799,7 +1708,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1844,7 +1753,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1855,7 +1764,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1866,7 +1775,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1893,7 +1802,7 @@
             <ul class="links-of-blogroll-list">
               
                 <li class="links-of-blogroll-item">
-                  <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  <a href="http://blog.ylkb.net/" title="blog" target="_blank">blog</a>
                 </li>
               
             </ul>
@@ -1988,6 +1897,12 @@
 
 
 
+
+
+
+
+
+
   
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
@@ -2010,21 +1925,25 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  
-
   
 
   
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+  
+
+  
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -2069,6 +1988,10 @@
 
 
 
+
+  
+
+  
 
   
 
